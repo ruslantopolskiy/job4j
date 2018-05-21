@@ -5,12 +5,11 @@ package ru.job4j.calculate;
 * @since 19.05.2018
 * @version 1.0
 */
-
 public class Calculate {
 
 /**
-* Metod Main
-* @param args
+* Metod Main.
+* @param args - args
 */
     public static void main(String[] args) {
         System.out.println("Hello World");
