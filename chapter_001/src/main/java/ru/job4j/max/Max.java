@@ -24,7 +24,6 @@ public class Max {
     public int max(int ferst, int second, int third) {
         int a = this.max(ferst, second);
         int b = this.max(second, third);
-        int temp = this.max(a, b);
-        return temp;
+        return this.max(a, b);
     }
 }
