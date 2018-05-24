@@ -11,7 +11,6 @@ public class FactorialTest {
         Factorial factorial = new Factorial();
         assertThat(
                 factorial.calc(5), is(120));
-
     }
 
     @Test
