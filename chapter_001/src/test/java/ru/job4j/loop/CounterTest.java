@@ -10,7 +10,7 @@ public class CounterTest {
     public void whenSumEverNumbersFromOneToTenWhenThirty() {
         Counter counter = new Counter();
         assertThat(
-                counter.add(1,10), is(30));
+                counter.add(1, 10), is(30));
     }
 }
 
