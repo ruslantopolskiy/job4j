@@ -10,7 +10,7 @@ public class Max {
      * @param second второй аргумент.
      * @return большее число.
      */
-    public int max(int ferst, int second){
+    public int max(int ferst, int second) {
         return ferst > second ? ferst : second;
     }
 
@@ -22,6 +22,6 @@ public class Max {
      * @return большее число.
      */
     public int max(int ferst, int second, int third) {
-        return (max(ferst,max(second,third)));
+        return (max(ferst, max(second, third)));
     }
 }
