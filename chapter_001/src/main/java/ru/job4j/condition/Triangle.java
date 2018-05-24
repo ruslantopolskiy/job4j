@@ -34,8 +34,8 @@ public class Triangle {
      */
     public double area() {
         double rsl = -1;
-        double ab = this.a.distanceTo(this.b);
-        double ac = this.a.distanceTo(this.c);
+        double ab = a.distanceTo(b);
+        double ac = a.distanceTo(this.c);
         double bc = this.b.distanceTo(this.c);
         double p = this.period(ab, ac, bc);
         if (this.exist(ab, ac, bc)) {
