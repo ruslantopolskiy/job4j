@@ -6,16 +6,16 @@ package ru.job4j.loop;
 public class Counter {
 
     /**.
-     * Metod distanceTo.
+     * Metod add.
      * @param start .
      *  @param finish .
      */
     public int add(int start, int finish){
-        int a=0;
-        for (int i=start;i<=finish;i++){
+        int result=0;
+        for (int i = start; i <= finish; i++) {
             if (i%2==0){
-                a+=i;
+                result+=i;
             }
-        }return a;
+        }return result;
     }
 }
