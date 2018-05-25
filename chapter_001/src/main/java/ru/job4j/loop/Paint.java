@@ -3,7 +3,7 @@ package ru.job4j.loop;
 import java.util.function.BiPredicate;
 
 /**
- * @author Petr Arsentev (parsentev@yandex.ru)
+ * @author Ruslan Topolskiy (ruslan.topolskiy@gmail.com)
  * @version $Id$
  * @since 0.1
  */
