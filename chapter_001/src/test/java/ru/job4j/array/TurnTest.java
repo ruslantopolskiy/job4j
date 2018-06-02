@@ -7,6 +7,7 @@ package ru.job4j.array;
  * @version $Id$
  * @since 0.1
  */
+
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.is;
@@ -22,11 +23,12 @@ public class TurnTest {
         int[] expect = new int[]{5, 4, 3, 2, 1};
         assertThat(result, is(expect));
     }
+
     @Test
     //тест, проверяющий переворот массива с чётным числом элементов.
     public void whenTurnArrayWithEvenAmountOfElementsThenTurnedArray() {
         Turn turner = new Turn();
-        int[] input = new int[]{ 2, 3, 4, 5};
+        int[] input = new int[]{2, 3, 4, 5};
         int[] result = turner.turn(input);
         int[] expect = new int[]{5, 4, 3, 2};
         assertThat(result, is(expect));
