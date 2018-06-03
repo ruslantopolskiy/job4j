@@ -1,7 +1,6 @@
 package ru.job4j.calculator;
 
 import org.junit.Test;
-import ru.job4j.сalculator.Fit;
 
 import static org.hamcrest.number.IsCloseTo.closeTo;
 import static org.junit.Assert.assertThat;
