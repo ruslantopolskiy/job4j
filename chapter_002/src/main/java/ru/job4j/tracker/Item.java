@@ -17,20 +17,37 @@ public class Item {
         this.id = id;
     }
 
+
     public String getId() {
         return id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getName() {
         return name;
     }
 
+    public void setDesk(String desk) {
+        this.desk = desk;
+    }
+
     public String getDesk() {
         return desk;
     }
 
+    public void setCreated(long created) {
+        this.created = created;
+    }
+
     public long getCreated() {
         return created;
+    }
+
+    public void setComments(String[] comments) {
+        this.comments = comments;
     }
 
     public String[] getComments() {
