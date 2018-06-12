@@ -33,9 +33,10 @@ public class Tracker {
      *
      * @param item
      */
-    public void replace(Item item) {
+    public void replace(String id, Item item) {
         for (int index = 0; index < this.position; index++) {
-            if (this.items[index].getId().equals(item.getId())) {
+            if (this.items[index].getId().equals(id)) {
+                item.setId(this.items[index].getId());
                 this.items[index] = item;
                 break;
             }
@@ -52,7 +53,7 @@ public class Tracker {
         for (int index = 0; index < this.position; index++) {
             if (this.items[index].getId().equals(id)) {
                 System.arraycopy(this.items, index + 1, this.items, index, this.position - index - 1);
-                this.items[position-1] = null;
+                this.items[position - 1] = null;
                 this.position--;
                 break;
             }

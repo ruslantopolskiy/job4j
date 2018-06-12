@@ -31,7 +31,7 @@ public class TrackerTest {
         Item next = new Item("Петр", "d12", 2);
         tracker.add(next);
         next.setId(previous.getId());
-        tracker.replace(next);
+        tracker.replace(previous.getId(), next);
         assertThat(tracker.findById(previous.getId()).getName(), is("Петр"));
     }
 
