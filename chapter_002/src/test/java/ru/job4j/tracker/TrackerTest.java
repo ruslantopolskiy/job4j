@@ -29,8 +29,9 @@ public class TrackerTest {
         Item previous = new Item("Вася", "020", 1);
         tracker.add(previous);
         Item next = new Item("Петр", "d12", 2);
+        tracker.add(next);
         next.setId(previous.getId());
-        tracker.replace(previous.getId(), next);
+        tracker.replace(next);
         assertThat(tracker.findById(previous.getId()).getName(), is("Петр"));
     }
 

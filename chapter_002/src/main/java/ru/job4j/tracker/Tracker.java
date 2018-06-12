@@ -31,12 +31,11 @@ public class Tracker {
      * Редактирование заявок
      * metod replace
      *
-     * @param id
      * @param item
      */
-    public void replace(String id, Item item) {
+    public void replace(Item item) {
         for (int index = 0; index < this.position; index++) {
-            if (this.items[index].getId().equals(id)) {
+            if (this.items[index].getId().equals(item.getId())) {
                 this.items[index] = item;
                 break;
             }
