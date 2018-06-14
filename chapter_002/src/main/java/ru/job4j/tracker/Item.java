@@ -7,16 +7,28 @@ public class Item {
     private long created;
     private String[] comments;
 
+
+    public Item() {
+    }
+
     public Item(String name, String desk, long created) {
         this.name = name;
         this.desk = desk;
         this.created = created;
     }
 
-    public void setId(String id) {
+    public Item(String id) {
         this.id = id;
     }
 
+    public Item(String name, String desk) {
+        this.name = name;
+        this.desk = desk;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getId() {
         return id;
