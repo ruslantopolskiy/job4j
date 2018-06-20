@@ -88,9 +88,10 @@ public class StartUI {
      */
     private void replaceItem() {
         System.out.println("------------ Редактирование заявки --------------");
+        String id = this.input.ask("Введите id");
         String name = this.input.ask("Введите новое имя заявки :");
         String desc = this.input.ask("Введите описание заявки :");
-        Item item = new Item(name, desc);
+        Item item = new Item(id, name, desc);
         this.tracker.replace(item.getId(), item);
         System.out.println("------------ Заявка отредактирована : " + item.getName() + "-----------");
     }
@@ -120,8 +121,7 @@ public class StartUI {
     private void findbyName() {
         System.out.println("------------ Получение списка по имени --------------");
         String name = this.input.ask("Введите иля заявки :");
-        Item item = new Item(name);
-        System.out.println("------------ Cписок всех заявок  : " + this.tracker.findByName(name) + "-----------");
+        System.out.println("------------ Cписок всех заявок по именем : " +this.tracker.findByName(name)  +"-----------");
     }
 
     /**

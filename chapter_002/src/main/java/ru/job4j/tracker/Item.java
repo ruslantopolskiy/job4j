@@ -20,6 +20,11 @@ public class Item {
     public Item(String id) {
         this.id = id;
     }
+    public Item(String id,String name, String desk) {
+        this.name = name;
+        this.desk = desk;
+        this.id = id;
+    }
 
     public Item(String name, String desk) {
         this.name = name;
