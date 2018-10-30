@@ -2,33 +2,13 @@ package ru.job4j.tracker;
 
 public class Item {
     private String id;
+    private String description;
     private String name;
-    private String desk;
-    private long created;
-    private String[] comments;
+    private long create;
 
-
-    public Item() {
-    }
-
-    public Item(String name, String desk, long created) {
+    public Item(String name, String description) {
         this.name = name;
-        this.desk = desk;
-        this.created = created;
-    }
-
-    public Item(String id) {
-        this.id = id;
-    }
-    public Item(String id,String name, String desk) {
-        this.name = name;
-        this.desk = desk;
-        this.id = id;
-    }
-
-    public Item(String name, String desk) {
-        this.name = name;
-        this.desk = desk;
+        this.description = description;
     }
 
     public void setId(String id) {
@@ -39,6 +19,14 @@ public class Item {
         return id;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -47,27 +35,13 @@ public class Item {
         return name;
     }
 
-    public void setDesk(String desk) {
-        this.desk = desk;
+    public void setCreate(long create) {
+        this.create = create;
     }
 
-    public String getDesk() {
-        return desk;
+    public long getCreate() {
+        return create;
     }
 
-    public void setCreated(long created) {
-        this.created = created;
-    }
 
-    public long getCreated() {
-        return created;
-    }
-
-    public void setComments(String[] comments) {
-        this.comments = comments;
-    }
-
-    public String[] getComments() {
-        return comments;
-    }
 }
