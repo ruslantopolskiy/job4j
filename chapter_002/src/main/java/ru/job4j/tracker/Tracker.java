@@ -56,14 +56,18 @@ public class Tracker {
     }
 
     //удаление заявок
-    public void delete(String id) {
+    public boolean delete(String id) {
+        boolean result = false;
         for (int index = 0; index < this.position; index++) {
             if (items[index].getId().equals(id)) {
                 System.arraycopy(items, index + 1, items, index, this.position - 1 - index);
             }
             this.items[this.position - 1] = null;
             this.position--;
+            result = true;
+            break;
         }
+        return result;
     }
 
     //получение списка всех заявок
