@@ -18,7 +18,9 @@ public class MenuTracker {
         actions.add(0, new AddItem());
         actions.add(1, new ShowItems());
         actions.add(2, new EditItems());
-        actions.add(3,new DeleteItem());
+        actions.add(3, new DeleteItem());
+        actions.add(4, new FindbyIdItem());
+        actions.add(5,new FindbyNameItem());
     }
 
     public int getSizeActions() {
@@ -70,10 +72,11 @@ public class MenuTracker {
         @Override
         public void execute(Input input, Tracker tracker) {
             System.out.println("------------ Show item's --------------");
-            for (Item item : tracker.findAll()){
+            for (Item item : tracker.findAll()) {
                 System.out.println((String.format("Id: %s Name: %s Description: %s",
                         item.getId(), item.getName(), item.getDescription())));
-        }}
+            }
+        }
 
         @Override
         public String info() {
@@ -95,8 +98,8 @@ public class MenuTracker {
             String description = input.ask("Please, provide item description:");
             Item item = new Item(name, description);
             tracker.replace(id, item);
-                System.out.println((String.format("Id: %s Name: %s Description: %s",
-                        item.getId(), item.getName(), item.getDescription())));
+            System.out.println((String.format("Id: %s Name: %s Description: %s",
+                    item.getId(), item.getName(), item.getDescription())));
         }
 
         @Override
@@ -105,7 +108,7 @@ public class MenuTracker {
         }
     }
 
-    public class DeleteItem implements UserAction{
+    public class DeleteItem implements UserAction {
         @Override
         public int key() {
             return 3;
@@ -129,4 +132,52 @@ public class MenuTracker {
         }
     }
 
+    private class FindbyIdItem implements UserAction {
+        @Override
+        public int key() {
+            return 4;
+        }
+
+        @Override
+        public void execute(Input input, Tracker tracker) {
+            String id = input.ask("Please, provide item id:");
+            Item result = tracker.findbyId(id);
+            if (result != null) {
+                System.out.println(String.format("Item was id: %s", id));
+            } else {
+                System.out.println(String.format("Item no was id: %s", id));
+            }
+        }
+
+        @Override
+        public String info() {
+            return "Find by Id Item";
+        }
+    }
+
+
+        private class FindbyNameItem implements UserAction {
+            @Override
+            public int key() {
+                return 5;
+            }
+
+            @Override
+            public void execute(Input input, Tracker tracker) {
+                String name = input.ask("Please, provide item name: ");
+                Item result[] = tracker.findByName(name);
+                if(result.length > 0) {
+                    for (Item item:result){
+                        System.out.println(item);
+                    }
+                }else {
+                    System.out.println(String.format("Item no was name: %s",name));
+                }
+            }
+
+            @Override
+            public String info() {
+                return "Find by Name Item";
+            }
+        }
 }
