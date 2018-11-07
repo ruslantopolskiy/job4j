@@ -22,14 +22,20 @@ public class StartUI {
         for (int index = 0; index < menuTracker.getSizeActions(); index++) {
             range.add(index);
         }
+
+        int[] ranges = new int[range.size()];
+        for (int index = 0; index < range.size(); index++) {
+            ranges[index] = range.get(index);
+        }
+
         do {
             menuTracker.show();
-            menuTracker.select(parseInt(input.ask("select:" +range)));
+            menuTracker.select(input.ask("select: " + range, ranges));
         } while (!"y".equals(this.input.ask("Exit?(y): ")));
     }
 
     public static void main(String[] args) {
-        new StartUI(new ConsoleInput(), new Tracker()).init();
+        new StartUI(new ValidateInput(), new Tracker()).init();
     }
 
 }

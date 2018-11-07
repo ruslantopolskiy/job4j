@@ -45,14 +45,17 @@ public class Tracker {
     }
 
     //редактирование заявок
-    public void replace(String id, Item item) {
+    public boolean replace(String id, Item item) {
+        boolean result = false;
         for (int index = 0; index <= this.position; index++) {
             if (items[index].getId().equals(id)) {
                 item.setId(items[index].getId());
                 items[index] = item;
+                result = true;
                 break;
             }
-        }
+    }
+        return result;
     }
 
     //удаление заявок
