@@ -59,7 +59,7 @@ public class MenuTracker {
 
         @Override
         public String info() {
-            return "Add new Item.";
+            return "0. Add new Item.";
         }
     }
 
@@ -80,7 +80,7 @@ public class MenuTracker {
 
         @Override
         public String info() {
-            return "Show Item's.";
+            return "1. Show Item's.";
         }
     }
 
@@ -104,7 +104,7 @@ public class MenuTracker {
 
         @Override
         public String info() {
-            return "Edit Item.";
+            return "2. Edit Item.";
         }
     }
 
@@ -128,7 +128,7 @@ public class MenuTracker {
 
         @Override
         public String info() {
-            return "Delete Item";
+            return "3. Delete Item.";
         }
     }
 
@@ -151,7 +151,7 @@ public class MenuTracker {
 
         @Override
         public String info() {
-            return "Find by Id Item";
+            return "4. Find by Id Item.";
         }
     }
 
@@ -177,7 +177,7 @@ public class MenuTracker {
 
         @Override
         public String info() {
-            return "Find by Name Item";
+            return "5. Find by Name Item.";
         }
     }
 }

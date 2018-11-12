@@ -27,22 +27,19 @@ public class StartUITest {
     }
 
     private final StringBuilder menu = new StringBuilder()
-            .append("Меню :")
+            .append("0. Add new Item.")
             .append(System.lineSeparator())
-            .append("0. Добавить заявку.")
+            .append("1. Show Item's.")
             .append(System.lineSeparator())
-            .append("1. Заменить заявку.")
+            .append("2. Edit Item.")
             .append(System.lineSeparator())
-            .append("2. Удалить заявку.")
+            .append("3. Delete Item.")
             .append(System.lineSeparator())
-            .append("3. Показать все заявки")
+            .append("4. Find by Id Item.")
             .append(System.lineSeparator())
-            .append("4. Найти заявку по имени")
+            .append("5. Find by Name Item.")
             .append(System.lineSeparator())
-            .append("5. Найти заявка по id.")
-            .append(System.lineSeparator())
-            .append("6. Выход.")
-            .append(System.lineSeparator())
+            .append("select: [0, 1, 2, 3, 4, 5]")
             .append(System.lineSeparator());
 
     /**
@@ -51,18 +48,22 @@ public class StartUITest {
     @Test
     public void whenUserAddItemThenTrackerHasName() {
         Tracker tracker = new Tracker();
-        Input input = new StubInput(new String[]{"0", "test name", "desc", "6"});
-        new StartUI(input, tracker).init();
+        Input input = new StubInput(new String[]{"0", "test name", "desc"});
+        new StartUI(new ValidateInput(input),tracker).init();
+
         assertThat(
                 new String(out.toByteArray()),
                 is(
                         new StringBuilder()
                                 .append(menu)
-                                .append("-----Добавление новой заявки-----")
+                                .append("------------ Adding new item --------------")
                                 .append(System.lineSeparator())
-                                .append("Заявка с id " + tracker.findByName("test name")[0].getId() + " создана!")
+                                .append("------------ New Item with Id : "+tracker.findByName("test name")[0].getId())
                                 .append(System.lineSeparator())
-                                .append(menu)
+                                .append("------------ New Item with Name : " +tracker.findByName("test name")[0].getName())
+                                .append(System.lineSeparator())
+                                .append("------------ New Item with Description : "+ tracker.findByName("test name")[0].getDescription())
+                                .append(System.lineSeparator())
                                 .toString()
                 )
         );
