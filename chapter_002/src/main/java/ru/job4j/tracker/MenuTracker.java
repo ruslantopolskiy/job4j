@@ -15,12 +15,12 @@ public class MenuTracker {
     private List<UserAction> actions = new ArrayList<>();
 
     public void fillActions() {
-        actions.add(0, new AddItem());
-        actions.add(1, new ShowItems());
-        actions.add(2, new EditItems());
-        actions.add(3, new DeleteItem());
-        actions.add(4, new FindbyIdItem());
-        actions.add(5, new FindbyNameItem());
+        actions.add(0, new AddItem(0, "Add new Item."));
+        actions.add(1, new ShowItems(1, "Show Item's."));
+        actions.add(2, new EditItems(2, "Edit Item."));
+        actions.add(3, new DeleteItem(3, "Delete Item."));
+        actions.add(4, new FindbyIdItem(4, "Find by Id Item."));
+        actions.add(5, new FindbyNameItem(5, "Find by Name Item."));
     }
 
     public int getSizeActions() {
@@ -39,18 +39,39 @@ public class MenuTracker {
         }
     }
 
-    public int[] getMassives(){
+    public int[] getMassives() {
         int[] massive = new int[actions.size()];
-        for (int index = 0; index < actions.size(); index++){
-            massive[index]=index;
+        for (int index = 0; index < actions.size(); index++) {
+            massive[index] = index;
         }
         return massive;
     }
 
-    public class AddItem implements UserAction {
+    abstract class BaseAction implements UserAction {
+
+        private int key;
+        private String name;
+
+        BaseAction(final int key, final String name) {
+            this.key = key;
+            this.name = name;
+        }
+
         @Override
         public int key() {
-            return 0;
+            return this.key;
+        }
+
+        @Override
+        public String info() {
+            return String.format("%s. %s", this.key, this.name);
+        }
+    }
+
+    public class AddItem extends BaseAction {
+
+        public AddItem(int key, String name) {
+            super(key, name);
         }
 
         @Override
@@ -64,17 +85,12 @@ public class MenuTracker {
             System.out.println("------------ New Item with Name : " + item.getName());
             System.out.println("------------ New Item with Description : " + item.getDescription());
         }
-
-        @Override
-        public String info() {
-            return "0. Add new Item.";
-        }
     }
 
-    private class ShowItems implements UserAction {
-        @Override
-        public int key() {
-            return 1;
+    private class ShowItems extends BaseAction {
+
+        public ShowItems(int key, String name) {
+            super(key, name);
         }
 
         @Override
@@ -85,17 +101,12 @@ public class MenuTracker {
                         item.getId(), item.getName(), item.getDescription())));
             }
         }
-
-        @Override
-        public String info() {
-            return "1. Show Item's.";
-        }
     }
 
-    private class EditItems implements UserAction {
-        @Override
-        public int key() {
-            return 2;
+    private class EditItems extends BaseAction {
+
+        public EditItems(int key, String name) {
+            super(key, name);
         }
 
         @Override
@@ -109,17 +120,12 @@ public class MenuTracker {
             System.out.println((String.format("Id: %s Name: %s Description: %s",
                     item.getId(), item.getName(), item.getDescription())));
         }
-
-        @Override
-        public String info() {
-            return "2. Edit Item.";
-        }
     }
 
-    public class DeleteItem implements UserAction {
-        @Override
-        public int key() {
-            return 3;
+    public class DeleteItem extends BaseAction {
+
+        public DeleteItem(int key, String name) {
+            super(key, name);
         }
 
         @Override
@@ -133,17 +139,12 @@ public class MenuTracker {
                 System.out.println(String.format("Item no was deleted id %s", id));
             }
         }
-
-        @Override
-        public String info() {
-            return "3. Delete Item.";
-        }
     }
 
-    private class FindbyIdItem implements UserAction {
-        @Override
-        public int key() {
-            return 4;
+    private class FindbyIdItem extends BaseAction {
+
+        public FindbyIdItem(int key, String name) {
+            super(key, name);
         }
 
         @Override
@@ -156,18 +157,13 @@ public class MenuTracker {
                 System.out.println(String.format("Item no was id: %s", id));
             }
         }
-
-        @Override
-        public String info() {
-            return "4. Find by Id Item.";
-        }
     }
 
 
-    private class FindbyNameItem implements UserAction {
-        @Override
-        public int key() {
-            return 5;
+    private class FindbyNameItem extends BaseAction {
+
+        public FindbyNameItem(int key, String name) {
+            super(key, name);
         }
 
         @Override
@@ -182,10 +178,6 @@ public class MenuTracker {
                 System.out.println(String.format("Item no was name: %s", name));
             }
         }
-
-        @Override
-        public String info() {
-            return "5. Find by Name Item.";
-        }
     }
 }
+
