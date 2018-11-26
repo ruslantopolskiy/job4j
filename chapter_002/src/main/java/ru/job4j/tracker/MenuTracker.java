@@ -39,6 +39,14 @@ public class MenuTracker {
         }
     }
 
+    public int[] getMassives(){
+        int[] massive = new int[actions.size()];
+        for (int index = 0; index < actions.size(); index++){
+            massive[index]=index;
+        }
+        return massive;
+    }
+
     public class AddItem implements UserAction {
         @Override
         public int key() {
