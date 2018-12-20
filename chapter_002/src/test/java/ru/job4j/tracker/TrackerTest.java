@@ -2,6 +2,9 @@ package ru.job4j.tracker;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
@@ -16,7 +19,7 @@ public class TrackerTest {
         Tracker tracker = new Tracker();
         Item item = new Item("test1", "testDescription");
         tracker.add(item);
-        assertThat(tracker.findAll()[0], is(item));
+        assertThat(tracker.findAll().get(0), is(item));
     }
 
     /**
@@ -49,9 +52,9 @@ public class TrackerTest {
         Item three = new Item("Давид", "testDescription");
         tracker.add(three);
         tracker.delete(one.getId());
-        Item[] result = new Item[2];
-        result[0] = two;
-        result[1] = three;
+        List<Item> result = new ArrayList<>();
+        result.add(two);
+        result.add(three);
         assertThat(tracker.findAll(), is(result));
     }
 
@@ -70,10 +73,10 @@ public class TrackerTest {
         tracker.add(third);
         Item fo = new Item("Петр", "testDescription3");
         tracker.add(fo);
-        Item[] expected = new Item[3];
-        expected[0] = first;
-        expected[1] = third;
-        expected[2] = fo;
+        ArrayList <Item> expected = new ArrayList<>();
+        expected.add(first);
+        expected.add(third);
+        expected.add(fo);
         assertThat(tracker.findByName("Петр"), is(expected));
     }
 
@@ -107,10 +110,10 @@ public class TrackerTest {
         tracker.add(b);
         Item c = new Item("Петр", "testDescription3");
         tracker.add(c);
-        Item[] result = new Item[3];
-        result[0] = a;
-        result[1] = b;
-        result[2] = c;
+        ArrayList<Item> result = new ArrayList<>();
+        result.add(a);
+        result.add(b);
+        result.add(c);
         assertThat(tracker.findAll(), is(result));
     }
 

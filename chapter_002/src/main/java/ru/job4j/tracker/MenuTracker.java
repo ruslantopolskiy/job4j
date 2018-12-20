@@ -169,8 +169,8 @@ public class MenuTracker {
         @Override
         public void execute(Input input, Tracker tracker) {
             String name = input.ask("Please, provide item name: ");
-            Item[] result = tracker.findByName(name);
-            if (result.length > 0) {
+            ArrayList<Item> result = tracker.findByName(name);
+            if (result.size() > 0) {
                 for (Item item : result) {
                     System.out.println(item);
                 }
