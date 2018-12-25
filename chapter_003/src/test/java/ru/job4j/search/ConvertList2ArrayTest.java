@@ -20,19 +20,19 @@ public class ConvertList2ArrayTest {
         int[][] expect = {
                 {1, 2, 3},
                 {4, 5, 6},
-                {7, 0 ,0}
+                {7, 0, 0}
         };
         assertThat(result, is(expect));
     }
 
     @Test
-    public void whenArrayThenList (){
+    public void whenArrayThenList() {
         ConvertList2Array list2Array = new ConvertList2Array();
-        ArrayList <int[]> list = new ArrayList<>();
-        list.add(new int[]{1,2,3,4});
-        list.add(new int[]{5,6,7});
+        ArrayList<int[]> list = new ArrayList<>();
+        list.add(new int[]{1, 2, 3, 4});
+        list.add(new int[]{5, 6, 7});
         List<Integer> result = list2Array.convert(list);
         List<Integer> finish = Arrays.asList(1, 2, 3, 4, 5, 6, 7);
-        assertThat(result,is (finish));
+        assertThat(result, is(finish));
     }
 }

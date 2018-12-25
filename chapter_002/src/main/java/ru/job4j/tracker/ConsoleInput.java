@@ -13,7 +13,7 @@ public class ConsoleInput implements Input {
     }
 
     @Override
-    public int ask(String questions, int ranges[])  {
+    public int ask(String questions, int[] ranges) {
         int key = Integer.valueOf(this.ask(questions));
         boolean exit = false;
         for (int value : ranges) {
@@ -26,5 +26,5 @@ public class ConsoleInput implements Input {
             throw new MenuOutException("Out of menu ranges");
         }
         return key;
-        }
+    }
 }

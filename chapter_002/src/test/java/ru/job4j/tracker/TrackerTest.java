@@ -73,7 +73,7 @@ public class TrackerTest {
         tracker.add(third);
         Item fo = new Item("Петр", "testDescription3");
         tracker.add(fo);
-        ArrayList <Item> expected = new ArrayList<>();
+        ArrayList<Item> expected = new ArrayList<>();
         expected.add(first);
         expected.add(third);
         expected.add(fo);

@@ -29,8 +29,9 @@ public class ConvertList2Array {
         List<Integer> finish = new ArrayList<>();
         Iterator<int[]> iterator = list.iterator();
         while (iterator.hasNext()) {
-            for (int value : iterator.next())
+            for (int value : iterator.next()) {
                 finish.add(value);
+            }
         }
         return finish;
     }

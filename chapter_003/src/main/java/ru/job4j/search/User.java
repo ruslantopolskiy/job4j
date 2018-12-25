@@ -5,7 +5,7 @@ public class User {
     private String id;
     private String city;
 
-    public User(String name, String id, String city){
+    public User(String name, String id, String city) {
         this.name = name;
         this.id = id;
         this.city = city;

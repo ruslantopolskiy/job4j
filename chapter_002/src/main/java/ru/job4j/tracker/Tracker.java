@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Random;
 
 public class Tracker {
-   // private Item[] items = new Item[10];
-    private List <Item> items = new ArrayList<>();
+    // private Item[] items = new Item[10];
+    private List<Item> items = new ArrayList<>();
     private int position = 0;
     private static final Random RN = new Random();
 
@@ -35,8 +35,8 @@ public class Tracker {
     }
 
     //получение списка по имени
-    public ArrayList <Item>  findByName(String key) {
-        ArrayList <Item> result = new ArrayList<>();
+    public ArrayList<Item> findByName(String key) {
+        ArrayList<Item> result = new ArrayList<>();
         for (int index = 0; index < this.position; index++) {
             if (this.items.get(index).getName().equals(key)) {
                 result.add(items.get(index));
@@ -51,11 +51,11 @@ public class Tracker {
         for (int index = 0; index <= this.position; index++) {
             if (this.items.get(index).getId().equals(id)) {
                 item.setId(items.get(index).getId());
-                items.set(index,item);
+                items.set(index, item);
                 result = true;
                 break;
             }
-    }
+        }
         return result;
     }
 
@@ -74,8 +74,8 @@ public class Tracker {
 
     //получение списка всех заявок
     public List<Item> findAll() {
-        List <Item> result = new ArrayList<>();
-            result.addAll(items);
+        List<Item> result = new ArrayList<>();
+        result.addAll(items);
         return result;
     }
 
