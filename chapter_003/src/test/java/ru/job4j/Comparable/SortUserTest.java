@@ -27,13 +27,13 @@ public class SortUserTest {
         SortUser sortUser = new SortUser();
         List<User> list = Arrays.asList(
                 new User("Руслан", 2),
-                new User("Алекc", 44),
-                new User("Алекc", 22));
-                new User("Яков",40);
+                new User("Ал", 44),
+                new User("Ал", 22),
+                new User("Яков", 40));
         List<User> set = new ArrayList<>();
-        set.add(new User("Алекс", 22));
-        set.add(new User("Алекся", 44));
-        set.add(new User("Руслан",2));
+        set.add(new User("Ал", 22));
+        set.add(new User("Ал", 44));
+        set.add(new User("Руслан", 2));
         set.add(new User("Яков", 40));
         assertThat(sortUser.sortByAllFields(list), is(set));
     }
