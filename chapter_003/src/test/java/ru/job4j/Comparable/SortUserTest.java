@@ -1,6 +1,7 @@
-package ru.job4j.Comparable;
+package ru.job4j.comparable;
 
 import org.junit.Test;
+import ru.job4j.comparable.SortUser;
 
 import java.util.*;
 
