@@ -2,14 +2,17 @@ package ru.job4j.tracker;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.function.Consumer;
 
 public class MenuTracker {
     private Input input;
     private Tracker tracker;
+    private final Consumer<String> output;
 
-    public MenuTracker(Input input, Tracker tracker) {
+    public MenuTracker(Input input, Tracker tracker, Consumer<String> output) {
         this.input = input;
         this.tracker = tracker;
+        this.output = output;
     }
 
     private List<UserAction> actions = new ArrayList<>();
@@ -76,14 +79,14 @@ public class MenuTracker {
 
         @Override
         public void execute(Input input, Tracker tracker) {
-            System.out.println("------------ Adding new item --------------");
+            output.accept("------------ Adding new item --------------");
             String name = input.ask("Please, provide item name:");
             String description = input.ask("Please, provide item description:");
             Item item = new Item(name, description);
             tracker.add(item);
-            System.out.println("------------ New Item with Id : " + item.getId());
-            System.out.println("------------ New Item with Name : " + item.getName());
-            System.out.println("------------ New Item with Description : " + item.getDescription());
+            output.accept("------------ New Item with Id : " + item.getId());
+            output.accept("------------ New Item with Name : " + item.getName());
+            output.accept("------------ New Item with Description : " + item.getDescription());
         }
     }
 
@@ -95,9 +98,9 @@ public class MenuTracker {
 
         @Override
         public void execute(Input input, Tracker tracker) {
-            System.out.println("------------ Show item's --------------");
+            output.accept("------------ Show item's --------------");
             for (Item item : tracker.findAll()) {
-                System.out.println((String.format("Id: %s Name: %s Description: %s",
+                output.accept((String.format("Id: %s Name: %s Description: %s",
                         item.getId(), item.getName(), item.getDescription())));
             }
         }
@@ -111,13 +114,13 @@ public class MenuTracker {
 
         @Override
         public void execute(Input input, Tracker tracker) {
-            System.out.println("------------ Edit item --------------");
+            output.accept("------------ Edit item --------------");
             String id = input.ask("Please, provide item id:");
             String name = input.ask("Please, provide item name:");
             String description = input.ask("Please, provide item description:");
             Item item = new Item(name, description);
             tracker.replace(id, item);
-            System.out.println((String.format("Id: %s Name: %s Description: %s",
+            output.accept((String.format("Id: %s Name: %s Description: %s",
                     item.getId(), item.getName(), item.getDescription())));
         }
     }
@@ -130,13 +133,13 @@ public class MenuTracker {
 
         @Override
         public void execute(Input input, Tracker tracker) {
-            System.out.println("------------ Delete item --------------");
+            output.accept("------------ Delete item --------------");
             String id = input.ask("Please, provide item id: ");
             boolean result = tracker.delete(id);
             if (result) {
-                System.out.println("Item was deleted");
+                output.accept("Item was deleted");
             } else {
-                System.out.println(String.format("Item no was deleted id %s", id));
+                output.accept(String.format("Item no was deleted id %s", id));
             }
         }
     }
@@ -152,9 +155,9 @@ public class MenuTracker {
             String id = input.ask("Please, provide item id:");
             Item result = tracker.findbyId(id);
             if (result != null) {
-                System.out.println(String.format("Item was id: %s", id));
+                output.accept(String.format("Item was id: %s", id));
             } else {
-                System.out.println(String.format("Item no was id: %s", id));
+                output.accept(String.format("Item no was id: %s", id));
             }
         }
     }
