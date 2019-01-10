@@ -20,4 +20,22 @@ public class UserConvertTest {
         result.add(new UserConvert.User("3D"));
         assertThat(userConvert.convert(buffer, UserConvert.User::new), is(result));
     }
+
+    @Test(expected = NullPointerException.class)
+    public void whenExceptionThrows() throws Exception {
+        List<String> names = Arrays.asList("Petr", "Nick", "Ban");
+        UserConvert.Wrapper<Exception> ex = null;
+        names.forEach(
+                n -> {
+                    try {
+                        UserConvert.badMethod();
+                    } catch (Exception e) {
+                        ex.set(e);
+                    }
+                }
+        );
+        if (!ex.isEmpty()) {
+            throw ex.get();
+        }
+    }
 }

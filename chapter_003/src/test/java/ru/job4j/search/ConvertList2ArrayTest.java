@@ -14,7 +14,7 @@ public class ConvertList2ArrayTest {
     public void when7ElementsThen9() {
         ConvertList2Array list = new ConvertList2Array();
         int[][] result = list.toArray(
-                Arrays.asList(1, 2, 3, 4, 5, 6, 7),
+                List.of(1, 2, 3, 4, 5, 6, 7),
                 3
         );
         int[][] expect = {
@@ -32,7 +32,7 @@ public class ConvertList2ArrayTest {
         list.add(new int[]{1, 2, 3, 4});
         list.add(new int[]{5, 6, 7});
         List<Integer> result = list2Array.convert(list);
-        List<Integer> finish = Arrays.asList(1, 2, 3, 4, 5, 6, 7);
+        List<Integer> finish = List.of(1, 2, 3, 4, 5, 6, 7);
         assertThat(result, is(finish));
     }
 }

@@ -57,7 +57,7 @@ public class StartUITest {
     public void whenUserAddItemThenTrackerHasName() {
         Tracker tracker = new Tracker();
         Input input = new StubInput(new String[]{"0", "test name", "desc", "y"});
-        new StartUI(new ValidateInput(input), tracker,output).init();
+        new StartUI(new ValidateInput(input), tracker, output).init();
 
         assertThat(
                 new String(out.toByteArray()),
@@ -83,7 +83,7 @@ public class StartUITest {
         Item item = tracker.add(new Item("test name", "desc"));
         Item item1 = tracker.add(new Item("test name1", "desc1"));
         Input input = new StubInput(new String[]{"1", "y"});
-        new StartUI(new ValidateInput(input), (tracker),output).init();
+        new StartUI(new ValidateInput(input), (tracker), output).init();
         assertThat(
                 new String(out.toByteArray()),
                 is(
@@ -105,7 +105,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("test1", "desk1"));
         Input input = new StubInput(new String[]{"2", item.getId(), "test2", "desk2", "y"});
-        new StartUI(new ValidateInput(input), tracker,output).init();
+        new StartUI(new ValidateInput(input), tracker, output).init();
         assertThat(
                 new String(out.toByteArray()),
                 is(
@@ -127,7 +127,7 @@ public class StartUITest {
         Item item = tracker.add(new Item("test1", "n1"));
         Item item1 = tracker.add(new Item("test2", "n2"));
         Input input = new StubInput(new String[]{"3", item1.getId(), "y"});
-        new StartUI(new ValidateInput(input), tracker,output).init();
+        new StartUI(new ValidateInput(input), tracker, output).init();
         assertThat(
                 new String(out.toByteArray()),
                 is(
@@ -152,7 +152,7 @@ public class StartUITest {
         Item item3 = tracker.add(new Item("test1", "desk4"));
 
         Input input = new StubInput(new String[]{"5", "test1", "y"});
-        new StartUI(new ValidateInput(input), tracker,output).init();
+        new StartUI(new ValidateInput(input), tracker, output).init();
         assertThat(
                 new String(out.toByteArray()),
                 is(
@@ -175,7 +175,7 @@ public class StartUITest {
         Item item = tracker.add(new Item("test1", "desk1"));
         Item item1 = tracker.add(new Item("test2", "desk2"));
         Input input = new StubInput(new String[]{"4", item.getId(), "y"});
-        new StartUI(new ValidateInput(input), tracker,output).init();
+        new StartUI(new ValidateInput(input), tracker, output).init();
         assertThat(
                 new String(out.toByteArray()),
                 is(

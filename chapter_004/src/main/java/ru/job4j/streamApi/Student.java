@@ -1,15 +1,16 @@
 package ru.job4j.streamApi;
 
+
 import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Student implements Comparator<Student> {
+public class Student implements Comparator <Student> {
 
     private String name;
-    private int score;
+    private Integer score;
 
     public String getName() {
         return name;
@@ -28,17 +29,14 @@ public class Student implements Comparator<Student> {
     public static List<Student> levelOf(List<Student> students, int bound) {
         return students.stream().
                 flatMap(Stream::ofNullable).
-                sorted().
+                sorted(Comparator.comparing(student -> student.name)).
                 takeWhile(student -> student.getScore() > bound).
                 collect(Collectors.toList());
     }
 
     @Override
-    public String toString() {
-        return "Student{" +
-                "name='" + name + '\'' +
-                ", score=" + score +
-                '}';
+    public int compare(Student o1, Student o2) {
+        return o1.getScore()-o2.getScore();
     }
 
     @Override
@@ -46,8 +44,8 @@ public class Student implements Comparator<Student> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Student student = (Student) o;
-        return score == student.score &&
-                Objects.equals(name, student.name);
+        return Objects.equals(name, student.name) &&
+                Objects.equals(score, student.score);
     }
 
     @Override
@@ -56,8 +54,11 @@ public class Student implements Comparator<Student> {
     }
 
     @Override
-    public int compare(Student o1, Student o2) {
-        return 0;
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", score=" + score +
+                '}';
     }
 }
 

@@ -12,13 +12,13 @@ public class StudentTest {
     @Test
     public void whenListConvertNewList() {
         List<Student> start = List.of(
-                new Student("AL1", 40),
-                new Student("AL2", 66),
-                new Student("AL3", 70));
+                new Student("test1", 40),
+                new Student("test2", 66),
+                new Student("test3", 70));
 
         List<Student> result = List.of(
-                new Student("AL2", 66),
-                new Student("AL3", 70));
+                new Student("test3", 70),
+                new Student("test2", 66));
         assertThat(Student.levelOf(start, 50), is(result));
     }
 

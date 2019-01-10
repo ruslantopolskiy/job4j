@@ -12,14 +12,14 @@ public class SortUserTest {
     @Test
     public void whenAgeThenSortAge() {
         SortUser sortUser = new SortUser();
-        List<User> list = Arrays.asList(
+        List<User> list = List.of(
                 new User("Руслан", 2),
                 new User("Вася", 44),
                 new User("Вадим", 22));
-        Set<User> set = new TreeSet<>();
-        set.add(new User("Руслан", 2));
-        set.add(new User("Вадим", 22));
-        set.add(new User("Вася", 44));
+        Set<User> set = Set.of(
+                new User("Вадим", 22),
+                new User("Руслан", 2),
+                new User("Вася", 44));
         assertThat(sortUser.sort(list), is(set));
     }
 
@@ -31,11 +31,11 @@ public class SortUserTest {
                 new User("Ал", 44),
                 new User("Ал", 22),
                 new User("Яков", 40));
-        List<User> set = new ArrayList<>();
-        set.add(new User("Ал", 22));
-        set.add(new User("Ал", 44));
-        set.add(new User("Руслан", 2));
-        set.add(new User("Яков", 40));
+        List<User> set = Arrays.asList(
+                new User("Ал", 22),
+                new User("Ал", 44),
+                new User("Руслан", 2),
+                new User("Яков", 40));
         assertThat(sortUser.sortByAllFields(list), is(set));
     }
 
