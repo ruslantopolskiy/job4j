@@ -1,9 +1,11 @@
 package ru.job4j.lambda;
 
 import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.lessThan;
 import static org.junit.Assert.assertThat;
@@ -22,7 +24,7 @@ public class DiapasonTest {
     @Test
     public void whenLinearFunctionThenQuadroResults() {
         Diapason diapason = new Diapason();
-        List<Double> result = diapason.diapason(5, 8, x -> x*x + 1);
+        List<Double> result = diapason.diapason(5, 8, x -> x * x + 1);
         List<Double> expected = Arrays.asList(26D, 37D, 50D);
         assertThat(result, is(expected));
     }

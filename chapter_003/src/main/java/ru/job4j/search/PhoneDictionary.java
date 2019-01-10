@@ -18,13 +18,14 @@ public class PhoneDictionary {
      */
     public List<Person> find(String key) {
         List<Person> result = new ArrayList<>();
-        for (var index = 0; index < persons.size(); index++)
+        for (var index = 0; index < persons.size(); index++) {
             if (persons.get(index).getAddress().contains(key)
                     || persons.get(index).getName().contains(key)
                     || persons.get(index).getPhone().contains(key)
                     || persons.get(index).getSurname().contains(key)) {
                 result.add(persons.get(index));
             }
+        }
             return result;
     }
 }
