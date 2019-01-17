@@ -1,10 +1,7 @@
 package ru.job4j.iterator;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class MatrixIterator implements Iterator {
 
@@ -17,17 +14,25 @@ public class MatrixIterator implements Iterator {
 
     @Override
     public boolean hasNext() {
-        return array[x].length != y;
+        if (x >= array.length) {
+            return false;
+        }
+        return array[x].length > y;
     }
+
 
     @Override
     public Object next() {
-        if (hasNext()) {
-            return array[x][y++];
-        } else {
-            y = 0;
-            return array[++x][y++];
+        if (!hasNext()) {
+            throw new NoSuchElementException();
         }
+        int res = array[x][y++];
+        if (y == array[x].length) {
+            y = 0;
+            x++;
+        }
+        return res;
     }
+
 }
 
