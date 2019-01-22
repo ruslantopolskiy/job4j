@@ -7,7 +7,6 @@ public class EvenIterator implements Iterator {
 
     private int[] numbers;
     private int count = 0;
-    private int cp;
 
     public EvenIterator(final int[] numbers) {
         this.numbers = numbers;
@@ -30,15 +29,10 @@ public class EvenIterator implements Iterator {
         if (!hasNext()) {
             throw new NoSuchElementException();
         }
-        for (int index = count; index < numbers.length; index++) {
-            if (numbers[index] % 2 == 0) {
-                count++;
-                break;
-            } else {
-                count++;
-            }
+        while (numbers[count] % 2 != 0){
+            count++;
         }
-        return numbers[count - 1];
+            return numbers[count++];
     }
 
 }
