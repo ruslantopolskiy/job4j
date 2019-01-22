@@ -1,6 +1,5 @@
 package ru.job4j.iterator;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class MatrixIterator implements Iterator {
