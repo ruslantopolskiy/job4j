@@ -31,9 +31,6 @@ public class EvenIterator implements Iterator {
         if (!hasNext()) {
             throw new NoSuchElementException();
         }
-        if (numbers[count] % 2 != 0) {
-            count++;
-        }
         return numbers[count++];
     }
 
