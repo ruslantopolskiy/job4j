@@ -14,12 +14,13 @@ public class Converter {
             @Override
             public boolean hasNext() {
                 boolean result = false;
+                while (it.hasNext() || inner.hasNext()){
                 if (inner.hasNext()) {
                     result = true;
-                } else if (it.hasNext()) {
+                    break;
+                } else  {
                     inner = it.next();
-                    result = hasNext();
-                }
+                }}
                 return result;
             }
 
