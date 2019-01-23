@@ -19,6 +19,8 @@ public class EvenIterator implements Iterator {
         for (int index = count; index < numbers.length; index++) {
             if (numbers[index] % 2 == 0) {
                 result = true;
+                count = index;
+                break;
             }
         }
         return result;
@@ -29,7 +31,7 @@ public class EvenIterator implements Iterator {
         if (!hasNext()) {
             throw new NoSuchElementException();
         }
-        while (numbers[count] % 2 != 0){
+        if (numbers[count] % 2 != 0){
             count++;
         }
             return numbers[count++];
