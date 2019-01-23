@@ -42,11 +42,14 @@ public class Student implements Comparable<Student> {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Student student = (Student) o;
-        return Objects.equals(name, student.name) &&
-                Objects.equals(score, student.score);
+        return Objects.equals(name, student.name) && Objects.equals(score, student.score);
     }
 
     @Override
@@ -56,10 +59,7 @@ public class Student implements Comparable<Student> {
 
     @Override
     public String toString() {
-        return "Student{" +
-                "name='" + name + '\'' +
-                ", score=" + score +
-                '}';
+        return "Student{" + "name='" + name + '\'' + ", score=" + score + '}';
     }
 }
 
