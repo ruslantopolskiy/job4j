@@ -38,16 +38,19 @@ public class SimpleArray<T> implements Iterable<T> {
     }
 
     public void add(T model) {
-        objects[index++] = model;
+        this.objects[index++] = model;
     }
 
     public void set(int index, T model) {
-        objects[index] = model;
+        if (index < this.index) {
+            this.objects[index] = model;
+        }
     }
-
     public void remove(int index) {
-        System.arraycopy(objects, index + 1, objects, index, objects.length - 1 - index);
-        objects[objects.length - 1] = null;
+        if (index < this.index) {
+            System.arraycopy(objects, index + 1, objects, index, objects.length - 1 - index);
+            objects[objects.length - 1] = null;
+        }
     }
 
     public T get(int index) {
@@ -59,11 +62,7 @@ public class SimpleArray<T> implements Iterable<T> {
         return new Iterator<T>() {
             @Override
             public boolean hasNext() {
-
-                if (objects.length == 0) {
-                    throw new NoSuchElementException();
-                }
-                return count < objects.length;
+                return count < index;
             }
 
             @Override
