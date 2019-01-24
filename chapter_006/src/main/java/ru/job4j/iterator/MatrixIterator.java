@@ -33,6 +33,5 @@ public class MatrixIterator implements Iterator {
         }
         return res;
     }
-
 }
 
