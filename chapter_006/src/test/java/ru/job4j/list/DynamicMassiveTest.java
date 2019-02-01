@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 import java.util.NoSuchElementException;
 
 import static org.hamcrest.Matchers.is;
@@ -68,7 +69,7 @@ public class DynamicMassiveTest {
         assertThat(list.iterator().hasNext(),is(true));
     }
 
-    @Test
+    @Test()
     public void WhenAdd2(){
         list.iterator().next();
         list.add(3432);
