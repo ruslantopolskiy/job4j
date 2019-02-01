@@ -52,5 +52,28 @@ public class DynamicMassiveTest {
         list.get(10);
     }
 
+    @Test
+    public void WhenNextIterator(){
+        assertThat(list.iterator().hasNext(),is(true));
+        assertThat(list.iterator().hasNext(),is(true));
+        assertThat(list.iterator().next(),is(0));
+        assertThat(list.iterator().hasNext(),is(true));
+        assertThat(list.iterator().next(),is(1));
+        assertThat(list.iterator().next(),is(2));
+        assertThat(list.iterator().next(),is(5));
+        assertThat(list.iterator().hasNext(),is(true));
+        assertThat(list.iterator().next(),is(4));
+        assertThat(list.iterator().next(),is(5));
+        assertThat(list.iterator().next(),is(6));
+        assertThat(list.iterator().hasNext(),is(true));
+    }
+
+    @Test
+    public void WhenAdd2(){
+        list.iterator().next();
+        list.add(3432);
+        list.iterator().next();
+
+    }
 
 }

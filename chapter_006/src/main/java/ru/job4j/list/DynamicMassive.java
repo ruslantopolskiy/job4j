@@ -1,7 +1,9 @@
 package ru.job4j.list;
 
 import java.util.Arrays;
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  *
@@ -11,6 +13,7 @@ public class DynamicMassive<T> implements Iterable<T> {
     private int count;
     private int modCount;
     private int defaultIndex = 10;
+    private int countIterator;
 
     public DynamicMassive() {
         this.container = new Object[defaultIndex];
@@ -36,6 +39,7 @@ public class DynamicMassive<T> implements Iterable<T> {
             this.container = Arrays.copyOf(this.container, newContainer);
         }
         this.container[count++] = value;
+        modCount++;
     }
 
     public T get(int index) {
@@ -49,14 +53,22 @@ public class DynamicMassive<T> implements Iterable<T> {
     @Override
     public Iterator<T> iterator() {
         return new Iterator<T>() {
+           int expectedModCount = modCount;
+
             @Override
             public boolean hasNext() {
-                return false;
+                if (expectedModCount != modCount) {
+                    throw new ConcurrentModificationException();
+                }
+                return countIterator < count;
             }
 
             @Override
             public T next() {
-                return null;
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                return (T) container[countIterator++];
             }
         };
     }
