@@ -3,9 +3,7 @@ package ru.job4j.list;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.ConcurrentModificationException;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
@@ -55,10 +53,11 @@ public class DynamicMassiveTest {
 
     @Test
     public void WhenNextIterator(){
-        assertThat(list.iterator().hasNext(),is(true));
-        assertThat(list.iterator().hasNext(),is(true));
-        assertThat(list.iterator().next(),is(0));
-        assertThat(list.iterator().hasNext(),is(true));
+        Iterator<Integer> iterator = list.iterator();
+        assertThat(iterator.hasNext(),is(true));
+        assertThat(iterator.hasNext(),is(true));
+        assertThat(iterator.next(),is(0));
+        assertThat(iterator.next(),is(1));
         assertThat(list.iterator().next(),is(0));
 
     }
