@@ -59,14 +59,8 @@ public class DynamicMassiveTest {
         assertThat(list.iterator().hasNext(),is(true));
         assertThat(list.iterator().next(),is(0));
         assertThat(list.iterator().hasNext(),is(true));
-        assertThat(list.iterator().next(),is(1));
-        assertThat(list.iterator().next(),is(2));
-        assertThat(list.iterator().next(),is(5));
-        assertThat(list.iterator().hasNext(),is(true));
-        assertThat(list.iterator().next(),is(4));
-        assertThat(list.iterator().next(),is(5));
-        assertThat(list.iterator().next(),is(6));
-        assertThat(list.iterator().hasNext(),is(true));
+        assertThat(list.iterator().next(),is(0));
+
     }
 
     @Test()

@@ -13,7 +13,7 @@ public class DynamicMassive<T> implements Iterable<T> {
     private int count;
     private int modCount;
     private int defaultIndex = 10;
-    private int countIterator;
+
 
 
     public DynamicMassive() {
@@ -55,6 +55,7 @@ public class DynamicMassive<T> implements Iterable<T> {
     public Iterator<T> iterator() {
         return new Iterator<T>() {
             int expectedModCount = modCount;
+            int countIterator;
 
             @Override
             public boolean hasNext() {
