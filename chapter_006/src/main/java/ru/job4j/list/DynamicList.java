@@ -58,9 +58,11 @@ public class DynamicList<T> implements Iterable<T> {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
+                countIterator++;
                 T result = head.date;
                 head = head.next;
                 return result;
+
             }
         };
     }
