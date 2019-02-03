@@ -40,5 +40,12 @@ public class DynamicListTest {
         assertThat(iterator.next(),is(3));
         assertThat(iterator.hasNext(),is(false));
     }
+    @Test()
+    public void WhenAdd2(){
+        list.iterator().next();
+        list.add(3432);
+        list.iterator().next();
+
+    }
 
 }

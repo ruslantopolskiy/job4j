@@ -1,9 +1,11 @@
 package ru.job4j.list;
 
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class DynamicList<T> implements Iterable<T> {
+    private int modCount;
     private int count;
     private Note<T> head;
     private Note<T> teal;
@@ -40,10 +42,14 @@ public class DynamicList<T> implements Iterable<T> {
     @Override
     public Iterator<T> iterator() {
         return new Iterator<T>() {
+            int expectedModCount = modCount;
             private int countIterator;
 
             @Override
             public boolean hasNext() {
+                if (expectedModCount != modCount) {
+                    throw new ConcurrentModificationException();
+                }
                 return countIterator < count;
             }
 
