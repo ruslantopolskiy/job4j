@@ -19,14 +19,17 @@ public class DynamicList<T> implements Iterable<T> {
         if (head == null) {
             this.head = note;
             count++;
-        }else if (teal == null){
+            modCount++;
+        } else if (teal == null) {
             this.teal = note;
             this.head.next = teal;
             count++;
+            modCount++;
         } else {
             teal.next = note;
-            this.teal =note;
+            this.teal = note;
             count++;
+            modCount++;
         }
     }
 
@@ -42,8 +45,9 @@ public class DynamicList<T> implements Iterable<T> {
     @Override
     public Iterator<T> iterator() {
         return new Iterator<T>() {
-           private int expectedModCount = modCount;
-           private int countIterator;
+            private int expectedModCount = modCount;
+            private int countIterator;
+            private Note<T> resultFinish = head;
 
             @Override
             public boolean hasNext() {
@@ -59,9 +63,9 @@ public class DynamicList<T> implements Iterable<T> {
                     throw new NoSuchElementException();
                 }
                 countIterator++;
-                T result = head.date;
-                head = head.next;
-                return result;
+                T resultIn = resultFinish.date;
+                resultFinish = resultFinish.next;
+                return resultIn;
 
             }
         };
