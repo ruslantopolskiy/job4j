@@ -42,8 +42,8 @@ public class DynamicList<T> implements Iterable<T> {
     @Override
     public Iterator<T> iterator() {
         return new Iterator<T>() {
-            int expectedModCount = modCount;
-            private int countIterator;
+           private int expectedModCount = modCount;
+           private int countIterator;
 
             @Override
             public boolean hasNext() {
@@ -58,7 +58,9 @@ public class DynamicList<T> implements Iterable<T> {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
-                return (T) get(countIterator++) ;
+                T result = head.date;
+                head = head.next;
+                return result;
             }
         };
     }
