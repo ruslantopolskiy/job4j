@@ -2,6 +2,7 @@ package ru.job4j.list;
 
 import org.junit.Before;
 import org.junit.Test;
+
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -32,6 +33,18 @@ public class SimpleStackTest {
     public void When3(){
         assertThat(simpleStack.poll(),is(simpleStack.list.get(5)));
         assertThat(simpleStack.list.size(),is(5));
+    }
+
+    @Test (expected = IllegalStateException .class)
+    public void When4(){
+        assertThat(simpleStack.poll(),is(6));
+        assertThat(simpleStack.poll(),is(5));
+        assertThat(simpleStack.poll(),is(4));
+        assertThat(simpleStack.poll(),is(3));
+        assertThat(simpleStack.poll(),is(2));
+        assertThat(simpleStack.poll(),is(1));
+        simpleStack.poll();
+
     }
 
 }

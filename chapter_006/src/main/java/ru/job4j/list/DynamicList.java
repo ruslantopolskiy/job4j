@@ -41,16 +41,18 @@ public class DynamicList<T> implements Iterable<T> {
         return result.date;
     }
 
-    public T delete(){
-        T result = null;
-        if (this.head == null){
+    public T delete() {
+        Note<T> result = head;
+        if (count == 0) {
             throw new IllegalStateException("список элементов пустой");
-        }else {
-            result = this.teal.date;
-            this.teal = null;
+        } else {
+            for (int index = 1; index < count; index++) {
+                result = result.next;
+            }
+            result.next = null;
             count--;
         }
-        return result;
+        return result.date;
     }
 
 
