@@ -16,8 +16,8 @@ public class DynamicListTest {
     @Before
     public void before() {
         list = new DynamicList();
-        list.add(2);
-        list.add(3);
+        list.addLast(2);
+        list.addLast(3);
     }
 
     @Test
@@ -44,8 +44,8 @@ public class DynamicListTest {
     @Test()
     public void WhenAdd2() {
         list.iterator().next();
-        list.add(3432);
-        list.add(34323);
+        list.addLast(3432);
+        list.addLast(34323);
         list.iterator().next();
     }
 

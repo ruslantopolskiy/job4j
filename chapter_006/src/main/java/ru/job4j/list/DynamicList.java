@@ -14,7 +14,7 @@ public class DynamicList<T> implements Iterable<T> {
         return this.count;
     }
 
-    public void add(T date) {
+    public void addLast(T date) {
         Note<T> note = new Note<>(date);
         if (head == null) {
             this.head = note;
@@ -33,6 +33,14 @@ public class DynamicList<T> implements Iterable<T> {
         }
     }
 
+    public void addFirst(T date){
+        Note<T> note = new Note<>(date);
+        note.next = this.head;
+        this.head = note;
+        count++;
+        modCount++;
+    }
+
     public T get(int in) {
         Note<T> result = head;
         for (int index = 0; index < in; index++) {
@@ -42,17 +50,16 @@ public class DynamicList<T> implements Iterable<T> {
     }
 
     public T delete() {
-        Note<T> result = head;
-        if (count == 0) {
-            throw new IllegalStateException("список элементов пустой");
-        } else {
-            for (int index = 1; index < count; index++) {
-                result = result.next;
-            }
-            result.next = null;
-            count--;
+        if (this.head == null){
+            throw  new IllegalArgumentException("not elements");
         }
-        return result.date;
+
+        Note<T> temp = this.head;
+        this.head = temp.next;
+        temp.next = null;
+        count--;
+        modCount--;
+        return temp.date;
     }
 
 
