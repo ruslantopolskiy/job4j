@@ -15,7 +15,6 @@ public class DynamicMassive<T> implements Iterable<T> {
     private int defaultIndex = 10;
 
 
-
     public DynamicMassive() {
         this.container = new Object[defaultIndex];
     }

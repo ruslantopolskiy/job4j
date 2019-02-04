@@ -35,5 +35,4 @@ public class SimpleArrayListTest {
         assertThat(list.delete(), is(7));
         assertThat(list.getSize(),is(6));
     }
-
 }
