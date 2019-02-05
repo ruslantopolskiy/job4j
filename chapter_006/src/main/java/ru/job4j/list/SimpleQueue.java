@@ -1,13 +1,17 @@
 package ru.job4j.list;
 
 public class SimpleQueue<T> {
-    DynamicList<T> dynamicList = new DynamicList<>();
+    SimpleStack <T> simpleStack = new SimpleStack<>();
+    SimpleStack <T> simpleStackNew = new SimpleStack<>();
+
     public T poll(){
-        return dynamicList.delete();
+        while (!simpleStack.isEmpty())
+         simpleStackNew.push(simpleStack.poll());
+         return simpleStackNew.poll();
     }
 
     public void push(T value){
-        dynamicList.addFirst(value);
+        simpleStack.push(value);
     }
 }
 

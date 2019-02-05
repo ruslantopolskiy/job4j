@@ -11,4 +11,7 @@ public class SimpleStack<T> {
         list.addFirst(value);
     }
 
+    public boolean isEmpty() {
+        return list.size() == 0;
+    }
 }
