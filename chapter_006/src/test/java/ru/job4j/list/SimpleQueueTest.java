@@ -13,21 +13,20 @@ public class SimpleQueueTest {
     public void before(){
         simple.push(1);
         simple.push(2);
-        simple.push(3);
-        simple.push(4);
-        simple.push(5);
-        simple.push(6);
-        simple.push(7);
+
     }
     @Test(expected = IllegalArgumentException .class)
     public void When(){
        assertThat(simple.poll(),is(1));
         assertThat(simple.poll(),is(2));
-        assertThat(simple.poll(),is(3));
-        assertThat(simple.poll(),is(4));
-        assertThat(simple.poll(),is(5));
-        assertThat(simple.poll(),is(6));
-        assertThat(simple.poll(),is(7));
-        simple.simpleStack.poll();
+
+        simple.in.poll();
+    }
+
+    @Test
+    public void name() {
+        assertThat(simple.poll(),is(1));
+        simple.push(19);
+        assertThat(simple.poll(),is(2));
     }
 }
