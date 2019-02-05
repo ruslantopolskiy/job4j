@@ -56,7 +56,15 @@ public class DynamicListTest {
         iterator.next();
         final Integer integer = list.get(0);
         assertThat(integer, is(2));
+    }
 
+    @Test
+    public void addFirst(){
+        list.addFirst(1);
+        list.addFirst(2);
+        list.addFirst(3);
+        list.addFirst(4);
+        list.addFirst(5);
     }
 
 }

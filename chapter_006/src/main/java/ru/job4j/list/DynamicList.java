@@ -55,10 +55,10 @@ public class DynamicList<T> implements Iterable<T> {
         }
 
         Note<T> temp = this.head;
-        this.head = temp.next;
+        this.head = this.head.next;
         temp.next = null;
         count--;
-        modCount--;
+        modCount++;
         return temp.date;
     }
 
@@ -95,6 +95,14 @@ public class DynamicList<T> implements Iterable<T> {
     private static class Note<T> {
         T date;
         Note<T> next;
+
+        @Override
+        public String toString() {
+            return "Note{" +
+                    "date=" + date +
+                    ", next=" + next +
+                    '}';
+        }
 
         public Note(T date) {
             this.date = date;
