@@ -7,7 +7,6 @@ import java.util.Iterator;
 public class SimpleSet<T> implements Iterable<T> {
     private DynamicMassive dynamicMassive;
     private int size;
-    private boolean result;
 
     public SimpleSet() {
         this.dynamicMassive = new DynamicMassive();
@@ -23,11 +22,10 @@ public class SimpleSet<T> implements Iterable<T> {
         return this.size = dynamicMassive.getSize();
     }
 
-
     public boolean uniqueValue(T value) {
         boolean result = true;
         for (int index = 0; index < dynamicMassive.getSize(); index++) {
-            if (dynamicMassive.get(index).equals(value)) {
+            if (dynamicMassive.getSize() == 0 || dynamicMassive.get(index).equals(value)) {
                 result = false;
             }
         }

@@ -16,10 +16,11 @@ public class SimpleSetTest {
         simpleSet.add(2);
         simpleSet.add(2);
         simpleSet.add(3);
+        simpleSet.add(4);
     }
     @Test
     public void WhenAdd(){
-        assertThat(simpleSet.sizeMassive(),is(2));
+        assertThat(simpleSet.sizeMassive(),is(4));
     }
 
 
