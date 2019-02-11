@@ -15,15 +15,12 @@ public class MapUser {
         map.put(second, (int) 2);
         System.out.println(map);
         System.out.println(first.equals(second));
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(first, second, map);
+        System.out.println(first.hashCode()+ "  &&&  " + second.hashCode());
     }
 
     public static void main(String[] args) {
         MapUser mapUser = new MapUser();
         mapUser.print();
+
     }
 }
