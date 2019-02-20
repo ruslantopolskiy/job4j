@@ -32,9 +32,12 @@ public class SimpleArray<T> implements Iterable<T> {
     private Object[] objects;
     private int count = 0;
     private int index = 0;
+    public int size;
+
 
     public SimpleArray(Integer size) {
         this.objects = new Object[size];
+        this.size = size;
     }
 
     public void add(T model) {
@@ -46,6 +49,7 @@ public class SimpleArray<T> implements Iterable<T> {
             this.objects[index] = model;
         }
     }
+
     public void remove(int index) {
         if (index < this.index) {
             System.arraycopy(objects, index + 1, objects, index, objects.length - 1 - index);
