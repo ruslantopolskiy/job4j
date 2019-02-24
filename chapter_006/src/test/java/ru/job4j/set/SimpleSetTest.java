@@ -13,6 +13,7 @@ public class SimpleSetTest {
         simpleSet = new SimpleSet<>();
         simpleSet.add(1);
         simpleSet.add(1);
+        simpleSet.add(null);
         simpleSet.add(2);
         simpleSet.add(2);
         simpleSet.add(3);

@@ -79,14 +79,11 @@ public class MapsHashMap<K, V> implements Iterable {
     public boolean delete(K key) {
         int index = indexFor(key.hashCode(), this.table.length);
         boolean result = false;
-        for (Node<K, V> node : this.table) {
-            if (node!=null && node.key.equals(key)) {
+            if (this.table[index]!=null && this.table[index].key.equals(key)) {
                 this.table[index] = null;
                 result = true;
                 this.size--;
                 modCount++;
-                break;
-            }
         }
         return result;
     }
@@ -113,11 +110,8 @@ public class MapsHashMap<K, V> implements Iterable {
     public V getValue (K key){
         int index = indexFor(key.hashCode(),this.table.length);
         V result = null;
-        for (Node<K,V> node: this.table){
             if (key.equals(this.table[index].key)){
                 result = this.table[index].value;
-                break;
-            }
         }
         return result;
     }
@@ -154,7 +148,7 @@ public class MapsHashMap<K, V> implements Iterable {
         };
     }
 
-    private static class Node<K, V> {
+    private static final class Node<K, V> {
         private K key;
         private V value;
 
