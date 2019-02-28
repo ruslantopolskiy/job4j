@@ -73,7 +73,7 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
                     throw new NoSuchElementException();
                 }
                 this.node = this.data.poll();
-                if (this.data.isEmpty() || this.node.leaves() !=null) {
+                if (this.node.leaves() !=null) {
                     for (Node<E> rst : node.leaves()) {
                         data.offer(rst);
                     }
