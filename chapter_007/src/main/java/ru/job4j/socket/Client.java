@@ -22,15 +22,21 @@ public class Client {
                 socket = new Socket(inetAddress, 5050);
                 System.out.println("Yes! I just got hold of the program.");
                 in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
+                out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()),true);
                 reader = new BufferedReader(new InputStreamReader(System.in));
-                System.out.println("Вы что-то хотели сказать? Введите это здесь:");
-                String word = reader.readLine();
-                out.write(word + "\n");
-                out.flush();
-                String serverWord = in.readLine();
-                System.out.println(serverWord);
-            } finally {
+                String input;
+                String output;
+                do {
+                    System.out.println("Вы что-то хотели сказать? Введите это здесь:");
+                    input = reader.readLine();
+                    out.println(input);
+                    output = in.readLine();
+                    while (!output.isEmpty()){
+                        System.out.println(output);
+                        output = in.readLine();
+                    }
+                } while (!input.equals("Exit"));
+            }finally {
                 socket.close();
                 in.close();
                 out.close();

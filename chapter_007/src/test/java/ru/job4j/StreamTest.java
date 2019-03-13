@@ -1,6 +1,7 @@
 package ru.job4j;
 
 import org.junit.Test;
+import ru.job4j.stream.Stream;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
