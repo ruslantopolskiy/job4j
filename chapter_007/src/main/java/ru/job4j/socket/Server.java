@@ -8,36 +8,42 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Server {
-    private int port;
+    private Socket socket;
 
-    public Server(int port) {
-        this.port = port;
+    public Server(Socket socket) {
+        this.socket = socket;
     }
 
     public void start() {
         String input;
         System.out.println("Server started, wait user's");
-        try (Socket socket = new ServerSocket(this.port).accept();
-             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-             PrintWriter out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true)) {
+        try (
+             BufferedReader in = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
+             PrintWriter out = new PrintWriter(new OutputStreamWriter(this.socket.getOutputStream()), true)) {
             if (socket.isConnected()){
                 System.out.println("*User connected*");
             }
             do {
                 input = in.readLine();
                 System.out.println(input);
-                if (input.equals("Hello") | (input.equals("hello"))) {
+                if (input.equals("Hello") | input.equals("hello")) {
                     out.println("Hello, dear friend, I'm a oracle.");
-                } else {
+                    out.println();
+                }else if(!input.equalsIgnoreCase("exit")){
                     out.println("It's an Oracle, you said : " + input);
+                    out.println();
                 }
-            } while (!input.equals("Exit") | (!input.equals("exit")));
+            } while (!input.equalsIgnoreCase("exit"));
         } catch (Exception e) {
             e.getStackTrace();
         }
     }
 
     public static void main(String[] args) {
-        new Server(5050).start();
+        try(final Socket socket = new ServerSocket(5050).accept()) {
+            new Server(socket).start();
+        }catch (Exception e){
+            e.getStackTrace();
+        }
     }
 }

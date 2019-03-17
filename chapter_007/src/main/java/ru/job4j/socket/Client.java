@@ -1,47 +1,48 @@
 package ru.job4j.socket;
 
-import java.io.*;
-
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.net.InetAddress;
-import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Client {
-    private static BufferedReader in;
-    private static PrintWriter out;
-    private static BufferedReader reader;
-    private static Socket socket;
-    private static String address = "127.0.0.1";
-    private static InetAddress inetAddress;
+    private Socket socket;
+    private static int port = 5050;
+    private static String adress = "localhost";
+
+    public Client(Socket socket) {
+        this.socket = socket;
+    }
+
+    public void start() {
+        String outServ;
+        String inServ;
+        System.out.println("Hello.");
+        try (
+             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+             BufferedReader keyIn = new BufferedReader(new InputStreamReader(System.in));
+             PrintWriter out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true)) {
+            do {
+                System.out.println("Enter your message: ");
+                out.println(outServ = keyIn.readLine());
+                inServ = in.readLine();
+                while (!inServ.isEmpty()) {
+                    System.out.println(inServ);
+                    inServ = in.readLine();
+                }
+            } while (!outServ.equalsIgnoreCase("exit"));
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
+    }
 
     public static void main(String[] args) {
-        try {
-            try {
-                inetAddress = InetAddress.getByName(address);
-                System.out.println("Any of you heard of a socket with IP address " + address + " and port 5050.");
-                socket = new Socket(inetAddress, 5050);
-                System.out.println("Yes! I just got hold of the program.");
-                in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()),true);
-                reader = new BufferedReader(new InputStreamReader(System.in));
-                String input;
-                String output;
-                do {
-                    System.out.println("Вы что-то хотели сказать? Введите это здесь:");
-                    input = reader.readLine();
-                    out.println(input);
-                    output = in.readLine();
-                    while (!output.isEmpty()){
-                        System.out.println(output);
-                        output = in.readLine();
-                    }
-                } while (!input.equals("Exit"));
-            }finally {
-                socket.close();
-                in.close();
-                out.close();
-            }
-        } catch (Exception e) {
+        try {final Socket socket = new Socket(InetAddress.getByName(adress),port);
+            new Client(socket).start();
+
+        }catch (Exception e){
             e.getStackTrace();
         }
     }
