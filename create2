@@ -31,9 +31,9 @@ INSERT INTO product VALUES
 (5,'Мороженное Анна',2,1,'2019-06-26',13),
 (6,'Петрович',4,3,'2019-07-01',23);
 			 
-SELECT p.*,t.name from product AS p JOIN type AS t ON p.Type_id = t.id WHERE t.id = 2;
+SELECT p.*,t.name from product AS p JOIN type AS t ON p.Type_id = t.id WHERE t.name = 'Сыр';
 SELECT * FROM product WHERE name LIKE '%Мороженное%'; 
-SELECT p.*,t.name from product AS p JOIN type AS t ON p.Type_id = t.id WHERE expired_date BETWEEN '2019-05-01' AND '2019-05-30';
+SELECT p.*,t.name from product AS p JOIN type AS t ON p.Type_id = t.id WHERE p.expired_date BETWEEN CURRENT_DATE AND CURRENT_DATE + interval '1 month';
 SELECT * from product WHERE price = (SELECT MAX(Price) from product);
 SELECT p.*,t.name from product AS p JOIN type AS t ON p.Type_id = t.id WHERE t.name = 'Сыр';	
 SELECT p.*,t.name from product AS p JOIN type AS t ON p.Type_id = t.id WHERE t.name IN ( 'Сыр','Молоко');
