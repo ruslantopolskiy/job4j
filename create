@@ -1,0 +1,58 @@
+CREATE DATABASE JAVA_A_FROM_Z;
+
+CREATE TABLE state(
+state_id SERIAL PRIMARY KEY,
+name VARCHAR(30));
+
+CREATE TABLE category(
+category_id SERIAL PRIMARY KEY,
+name VARCHAR(30));	
+
+CREATE TABLE roles(
+roles_id SERIAL PRIMARY KEY,
+name VARCHAR(30));
+
+CREATE TABLE rules(
+rules_id SERIAL PRIMARY KEY,
+name VARCHAR(30));
+
+CREATE TABLE users(
+users_id SERIAL PRIMARY KEY,
+name VARCHAR(30),
+roles_id INT REFERENCES roles(roles_id));			 
+
+CREATE TABLE item(
+item_id SERIAL PRIMARY KEY,
+user_id INT REFERENCES users(users_id),
+category_id INT REFERENCES category(category_id),
+state_id INT REFERENCES state(state_id));
+			 
+CREATE TABLE comments(
+comments_id SERIAL PRIMARY KEY,
+name VARCHAR(30),
+item_id INT REFERENCES item(item_id));
+			 
+CREATE TABLE attachs(
+attachs_id SERIAL PRIMARY KEY,
+name VARCHAR(30),
+item_id INT REFERENCES item(item_id));
+			 		 
+CREATE TABLE roles_rules(
+roles_id INT REFERENCES roles(roles_id),
+rules_id INT REFERENCES rules(rules_id));	
+
+
+INSERT INTO state (name) VALUES('Wait'),('Execution'),('Secuues');
+INSERT INTO category (name) VALUES ('Correction'),('Request');
+INSERT INTO roles (name) VALUES ('Administrator'),('Simple_user');
+INSERT INTO rules (name) VALUES ('Add'),('Edit'),('Delete');
+INSERT INTO users (name) VALUES ('Ruslan'),('Anna'),('Aleksandr');
+INSERT INTO item VALUES (1,1,1,1),(2,1,2,1);
+INSERT INTO comments VALUES (1,'COM1',1), (2,'COM2',2);
+INSERT INTO attachs VALUES (1,'C:\123.txt',1),(2,'C:\123.txt',2);
+INSERT INTO  roles_rules VALUES (1,1),(1,2),(1,3),(2,1);
+	
+
+							  
+							  
+			 

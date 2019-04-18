@@ -1,0 +1,45 @@
+--Задание.
+--1. Написать запрос получение всех продуктов с типом "СЫР"
+--2. Написать запрос получения всех продуктов, у кого в имени есть слово "мороженное"
+--3. Написать запрос, который выводит все продукты, срок годности которых заканчивается в следующем месяце.
+--4. Написать запрос, который выводит самый дорогой продукт.
+--5. Написать запрос, который выводит количество всех продуктов определенного типа.
+--6. Написать запрос получение всех продуктов с типом "СЫР" и "МОЛОКО"
+--7. Написать запрос, который выводит тип продуктов, которых осталось меньше 10 штук.  
+--8. Вывести все продукты и их тип.
+
+
+CREATE TABLE type ( 
+Id SERIAL PRIMARY KEY,
+Name VARCHAR(30));
+
+CREATE TABLE product (
+ID SERIAL PRIMARY KEY,
+Name VARCHAR (30),
+Amount INT,
+Type_ID INT REFERENCES type(id),
+Expired_date DATE,
+Price INT);
+
+INSERT INTO type (name) VALUES 
+('Мороженное'),('Сыр'),('Молоко'),('Другое');
+INSERT INTO product VALUES
+(1,'Моцарелла',14,2,'2019-05-14',34),
+(2,'Российский',4,2,'2019-07-23',23),
+(3,'Мороженное Кузя',33,1,'2019-07-12',5),
+(4,'Весёлый молочник',34,3,'2019-05-22',14),
+(5,'Мороженное Анна',2,1,'2019-06-26',13),
+(6,'Петрович',4,3,'2019-07-01',23);
+			 
+SELECT p.*,t.name from product AS p JOIN type AS t ON p.Type_id = t.id WHERE t.name = 'Сыр';
+SELECT * FROM product WHERE name LIKE '%Мороженное%'; 
+SELECT p.*,t.name from product AS p JOIN type AS t ON p.Type_id = t.id WHERE p.expired_date BETWEEN CURRENT_DATE AND CURRENT_DATE + interval '1 month';
+SELECT * from product WHERE price = (SELECT MAX(Price) from product);
+SELECT p.*,t.name from product AS p JOIN type AS t ON p.Type_id = t.id WHERE t.name = 'Сыр';	
+SELECT p.*,t.name from product AS p JOIN type AS t ON p.Type_id = t.id WHERE t.name IN ( 'Сыр','Молоко');
+SELECT p.name,t.name from product AS p JOIN type AS t ON p.Type_id = t.id WHERE Amount < 10;
+SELECT p.name,t.name from product AS p LEFT JOIN type t ON p.Type_id = t.id;
+	 
+			 
+			 
+			 

@@ -1,0 +1,50 @@
+CREATE TABLE car_body (
+id SERIAL PRIMARY KEY,
+name VARCHAR(30)	
+);
+
+CREATE TABLE engine (
+id SERIAL PRIMARY KEY,
+name VARCHAR(30)	
+);
+
+CREATE TABLE transmission (
+id SERIAL PRIMARY KEY,
+name VARCHAR(30)	
+);
+
+CREATE TABLE car(
+id SERIAL PRIMARY KEY,
+name VARCHAR(30),	
+id_body INT REFERENCES car_body(id),
+id_engine INT REFERENCES engine(id),
+id_transmission INT REFERENCES transmission(id));	
+	
+INSERT INTO car_body VALUES
+(1,'Седан'),(2,'Хэтчбэк'),(3,'Купэ'),(4,'Лимузин'),(5,'Спорткар');
+											
+INSERT INTO engine VALUES
+(1,'Бензиновый'),(2,'Дизельный'),(3,'Электрический');
+
+INSERT INTO transmission VALUES
+(1,'Автоматическая КПП'),(2,'Механическая КПП'),(3,'Робот');	
+											
+INSERT INTO car VALUES
+(1,'ВАЗ 21074',1,1,2),(2,'Мазда 6',2,1,2),(3,'Tesla',5,3,1);	
+
+--1. Вывести список всех машин и все привязанные к ним детали.
+SELECT c.name AS car,b.name AS car_body,e.name AS engine, t.name AS transmission FROM car AS c
+JOIN car_body AS b ON c.id_body = b.id 
+JOIN engine AS e ON c.id_engine = e.id
+JOIN transmission AS t ON c.id_transmission = t.id;
+											
+--2. Вывести отдельно детали, которые не используются в машине, кузова, двигатели, коробки передач.
+
+SELECT b.name from car_body AS b LEFT JOIN car AS c 											
+ON c.id_body = b.id WHERE c.id_body is null;
+											
+SELECT e.name from engine AS e LEFT JOIN car AS c 											
+ON c.id_body = e.id WHERE c.id_engine is null;											
+											
+SELECT t.name from transmission AS t LEFT JOIN car AS c 											
+ON c.id_body = t.id WHERE c.id_transmission is null;											
