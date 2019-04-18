@@ -113,7 +113,7 @@ public class StartUITest {
                                 .append(menu)
                                 .append("------------ Edit item --------------")
                                 .append(System.lineSeparator())
-                                .append("Id: " + item.getId() + " Name: " + tracker.findbyId(item.getId()).getName() + " Description: " + tracker.findbyId(item.getId()).getDescription())
+                                .append("Id: " + item.getId() + " Name: " + tracker.findById(item.getId()).getName() + " Description: " + tracker.findById(item.getId()).getDescription())
                                 .append(System.lineSeparator())
                                 .toString()
                 )

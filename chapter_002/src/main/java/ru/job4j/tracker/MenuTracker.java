@@ -77,6 +77,7 @@ public class MenuTracker {
             super(key, name);
         }
 
+
         @Override
         public void execute(Input input, Tracker tracker) {
             output.accept("------------ Adding new item --------------");
@@ -153,7 +154,7 @@ public class MenuTracker {
         @Override
         public void execute(Input input, Tracker tracker) {
             String id = input.ask("Please, provide item id:");
-            Item result = tracker.findbyId(id);
+            Item result = tracker.findById(id);
             if (result != null) {
                 output.accept(String.format("Item was id: %s", id));
             } else {

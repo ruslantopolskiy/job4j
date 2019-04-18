@@ -35,7 +35,7 @@ public class TrackerTest {
         tracker.add(next);
         next.setId(previous.getId());
         tracker.replace(previous.getId(), next);
-        assertThat(tracker.findbyId(previous.getId()).getName(), is("Петр"));
+        assertThat(tracker.findById(previous.getId()).getName(), is("Петр"));
     }
 
     /**
@@ -94,7 +94,7 @@ public class TrackerTest {
         Item third = new Item("Петр", "testDescription3");
         tracker.add(third);
         String id = second.getId();
-        assertThat(tracker.findbyId(id), is(second));
+        assertThat(tracker.findById(id), is(second));
     }
 
     /**
