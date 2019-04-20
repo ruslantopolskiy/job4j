@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TrackerSQL implements ITracker, AutoCloseable {
-    private PreparedStatement preparedStatement;
 
     private static final Logger LOG = LogManager.getLogger(TrackerSQL.class.getName());
     private Connection connection = null;
@@ -24,6 +23,12 @@ public class TrackerSQL implements ITracker, AutoCloseable {
             System.out.println("Connection to Store DB succesfull!");
         } catch (SQLException e) {
             LOG.error(e.getMessage(), e);
+        }finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                LOG.error(e.getMessage(),e);
+            }
         }
         return this.connection != null;
     }
@@ -38,8 +43,7 @@ public class TrackerSQL implements ITracker, AutoCloseable {
     @Override
     public Item add(Item item) {
         String id = null;
-        try {
-            preparedStatement = this.connection.prepareStatement("INSERT INTO items (name ,description, date ) VALUES(?,?,NOW()) ", PreparedStatement.RETURN_GENERATED_KEYS);
+        try (PreparedStatement preparedStatement = this.connection.prepareStatement("INSERT INTO items (name ,description, date ) VALUES(?,?,NOW()) ", PreparedStatement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, item.getName());
             preparedStatement.setString(2, item.getDescription());
             preparedStatement.executeUpdate();
@@ -57,26 +61,24 @@ public class TrackerSQL implements ITracker, AutoCloseable {
     @Override
     public boolean replace(String id, Item item) {
         boolean result = false;
-            try{
-                preparedStatement = connection.prepareStatement("UPDATE items SET name =?,description =?,date = NOW() WHERE id = ?");
-                preparedStatement.setString(1,item.getName());
-                preparedStatement.setString(1,item.getDescription());
-                preparedStatement.setInt(1,Integer.parseInt(item.getId()));
-                int rows = preparedStatement.executeUpdate();
-                if (rows >0){
-                    result = true;
-                }
-            }catch (SQLException e){
-                LOG.error(e.getMessage(),e);
+        try (PreparedStatement preparedStatement = connection.prepareStatement("UPDATE items SET name =?,description =?,date = NOW() WHERE id = ?")) {
+            preparedStatement.setString(1, item.getName());
+            preparedStatement.setString(1, item.getDescription());
+            preparedStatement.setInt(1, Integer.parseInt(item.getId()));
+            int rows = preparedStatement.executeUpdate();
+            if (rows > 0) {
+                result = true;
             }
+        } catch (SQLException e) {
+            LOG.error(e.getMessage(), e);
+        }
         return result;
     }
 
     @Override
     public boolean delete(String id) {
         int rows = 0;
-        try {
-            preparedStatement = this.connection.prepareStatement("DELETE FROM items WHERE id = ?");
+        try (PreparedStatement preparedStatement = this.connection.prepareStatement("DELETE FROM items WHERE id = ?")) {
             preparedStatement.setInt(1, Integer.parseInt(id));
             rows = preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -88,8 +90,7 @@ public class TrackerSQL implements ITracker, AutoCloseable {
     @Override
     public List<Item> findAll() {
         List<Item> result = new ArrayList<>();
-        try {
-            preparedStatement = this.connection.prepareStatement("SELECT * FROM items");
+        try (PreparedStatement preparedStatement = this.connection.prepareStatement("SELECT * FROM items")) {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 String name = resultSet.getString("name");
@@ -107,8 +108,7 @@ public class TrackerSQL implements ITracker, AutoCloseable {
     public ArrayList findByName(String key) {
         List<String> result = new ArrayList<>();
         String name = null;
-        try {
-            preparedStatement = this.connection.prepareStatement("SELECT name FROM items WHERE name = ?");
+        try (PreparedStatement preparedStatement = this.connection.prepareStatement("SELECT name FROM items WHERE name = ?")) {
             preparedStatement.setString(1, key);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -125,8 +125,7 @@ public class TrackerSQL implements ITracker, AutoCloseable {
     @Override
     public Item findById(String id) {
         Item item = null;
-        try {
-            preparedStatement = this.connection.prepareStatement("SELECT  * FROM items WHERE id = ?");
+        try (PreparedStatement preparedStatement = this.connection.prepareStatement("SELECT  * FROM items WHERE id = ?")) {
             preparedStatement.setInt(1, Integer.parseInt(id));
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
