@@ -23,12 +23,6 @@ public class TrackerSQL implements ITracker, AutoCloseable {
             System.out.println("Connection to Store DB succesfull!");
         } catch (SQLException e) {
             LOG.error(e.getMessage(), e);
-        }finally {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                LOG.error(e.getMessage(),e);
-            }
         }
         return this.connection != null;
     }
