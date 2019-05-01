@@ -49,13 +49,13 @@ public class StoreSQL implements AutoCloseable {
 
     public List<Entry> load() {
         List<Entry> list = new ArrayList<>();
-        try (PreparedStatement preparedStatement = connect.prepareStatement("SELECT field FROM Entries")){
+        try (PreparedStatement preparedStatement = connect.prepareStatement("SELECT field FROM Entries")) {
             ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 Entry entry = new Entry(resultSet.getString("field"));
                 list.add(entry);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.getStackTrace();
         }
 

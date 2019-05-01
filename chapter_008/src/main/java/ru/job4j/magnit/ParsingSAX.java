@@ -3,7 +3,6 @@ package ru.job4j.magnit;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
-
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -31,21 +30,17 @@ public class ParsingSAX {
             if (qName.equals("entry")) {
                 String value = attributes.getValue("field");
                 sum += Integer.valueOf(value);
-                System.out.println(sum);
             }
         }
     };
 
-    public void Parsing() throws ParserConfigurationException, SAXException, IOException {
-
+    public void Parsing()  {
+        try{
         SAXParserFactory factory = SAXParserFactory.newInstance();
         SAXParser parser = factory.newSAXParser();
         parser.parse(file, defaultHandler);
+    }catch (Exception e){
+            e.getStackTrace();
+        }
     }
-
-    public static void main(String[] args) throws IOException, SAXException, ParserConfigurationException {
-        ParsingSAX parsingSAX = new ParsingSAX(new File("output.xml"));
-        parsingSAX.Parsing();
-    }
-
 }

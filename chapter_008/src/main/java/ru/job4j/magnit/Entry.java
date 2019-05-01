@@ -2,19 +2,17 @@ package ru.job4j.magnit;
 
 
 public class Entry {
-    private String name;
+    private String field;
 
-   // public Entry(){}
-
-    public Entry(String name) {
-        this.name = name;
+    public Entry(String field) {
+        this.field = field;
     }
 
-    public String getName() {
-        return name;
+    public String getField() {
+        return field;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setField(String field) {
+        this.field = field;
     }
 }
