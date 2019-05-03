@@ -7,7 +7,7 @@ import java.util.List;
 public class Entries {
     private List<Entry> list;
 
-    public Entries(){
+    public Entries() {
     }
 
     public Entries(List<Entry> list) {

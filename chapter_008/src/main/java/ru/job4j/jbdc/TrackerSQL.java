@@ -37,7 +37,7 @@ public class TrackerSQL implements ITracker, AutoCloseable {
     @Override
     public Item add(Item item) {
         String id = null;
-        try (PreparedStatement preparedStatement = this.connection.prepareStatement("INSERT INTO items (name ,description, date ) VALUES(?,?,NOW()) ", PreparedStatement.RETURN_GENERATED_KEYS)) {
+        try (PreparedStatement preparedStatement = this.connection.prepareStatement("INSERT INTO items (name ,description) VALUES(?,?,NOW()) ", PreparedStatement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, item.getName());
             preparedStatement.setString(2, item.getDescription());
             preparedStatement.executeUpdate();

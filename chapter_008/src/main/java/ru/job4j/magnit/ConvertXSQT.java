@@ -31,7 +31,7 @@ public class ConvertXSQT {
             transformer.transform(
                     new StreamSource(source),
                     new StreamResult(dest));
-        }catch (Exception e){
+        } catch (Exception e) {
             e.getStackTrace();
         }
     }
