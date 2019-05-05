@@ -17,7 +17,7 @@ public class TrackerSQL implements ITracker, AutoCloseable {
     private String password = "password";
     private String url = "jdbc:postgresql://localhost:5432/java_a_from_z";
 
-    public TrackerSQL(Connection connection){
+    public TrackerSQL(Connection connection) {
         this.connection = connection;
     }
 
@@ -39,7 +39,7 @@ public class TrackerSQL implements ITracker, AutoCloseable {
 
     @Override
     public Item add(Item item) {
-        try (PreparedStatement preparedStatement = this.connection.prepareStatement("INSERT INTO items (name ,description,date) VALUES(?,?,NOW());",Statement.RETURN_GENERATED_KEYS)) {
+        try (PreparedStatement preparedStatement = this.connection.prepareStatement("INSERT INTO items (name ,description,date) VALUES(?,?,NOW());", Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, item.getName());
             preparedStatement.setString(2, item.getDescription());
             preparedStatement.executeUpdate();
