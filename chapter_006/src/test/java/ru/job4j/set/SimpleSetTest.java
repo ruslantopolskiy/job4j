@@ -2,11 +2,12 @@ package ru.job4j.set;
 
 import org.junit.Before;
 import org.junit.Test;
+
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 
 public class SimpleSetTest {
-    SimpleSet <Integer> simpleSet;
+    SimpleSet<Integer> simpleSet;
 
     @Before
     public void before() {
@@ -19,9 +20,10 @@ public class SimpleSetTest {
         simpleSet.add(3);
         simpleSet.add(4);
     }
+
     @Test
-    public void WhenAdd(){
-        assertThat(simpleSet.sizeMassive(),is(4));
+    public void whenAdd() {
+        assertThat(simpleSet.sizeMassive(), is(5));
     }
 
 

@@ -19,14 +19,16 @@ public class SimpleSet<T> implements Iterable<T> {
     }
 
     public int sizeMassive() {
-        return this.size = dynamicMassive.getSize();
+        this.size = dynamicMassive.getSize();
+        return this.size;
     }
 
     public boolean uniqueValue(T value) {
         boolean result = true;
         for (int index = 0; index < dynamicMassive.getSize(); index++) {
-            if (dynamicMassive.getSize() == 0 || dynamicMassive.get(index).equals(value)) {
+            if (dynamicMassive.get(index) != null && dynamicMassive.get(index).equals(value)) {
                 result = false;
+                break;
             }
         }
         return result;

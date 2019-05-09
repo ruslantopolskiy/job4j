@@ -48,7 +48,7 @@ public abstract class AbstractStore<T extends Base> implements Store<T> {
         return result;
     }
 
-    public T ByObjectsIndex(int index) {
+    public T byObjectsIndex(int index) {
         return simpleArray.get(index);
     }
 }

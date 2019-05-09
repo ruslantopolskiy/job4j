@@ -21,7 +21,7 @@ public class TreeTest {
         assertThat(tree.findBy(6).isPresent(), is(true));
     }
 
-    @Test (expected = InvalidRootException.class)
+    @Test(expected = InvalidRootException.class)
     public void whenFindElementsThenResultTrueorFalse() {
         Tree<Integer> tree = new Tree<>(1);
         tree.add(1, 2);
@@ -29,16 +29,16 @@ public class TreeTest {
         tree.add(4, 2);
     }
 
-    @Test (expected = NoSuchElementException.class)
+    @Test(expected = NoSuchElementException.class)
     public void whenIterateTreeThen() {
         Tree<Integer> tree = new Tree<>(1);
         tree.add(1, 2);
         tree.add(1, 3);
         tree.add(2, 4);
         tree.add(2, 5);
-        tree.add(3,6);
-        tree.add(3,7);
-        tree.add(3,8);
+        tree.add(3, 6);
+        tree.add(3, 7);
+        tree.add(3, 8);
         Iterator<Integer> it = tree.iterator();
         assertTrue(it.hasNext());
         assertThat(it.next(), is(1));
@@ -61,28 +61,28 @@ public class TreeTest {
     }
 
     @Test
-    public void whenOneIsBinaryThenTrueorFalse(){
+    public void whenOneIsBinaryThenTrueorFalse() {
         Tree<Integer> tree = new Tree<>(1);
         tree.add(1, 2);
         tree.add(1, 3);
         tree.add(2, 4);
         tree.add(2, 5);
-        tree.add(3,6);
-        tree.add(3,7);
-        tree.add(3,8);
-        assertThat(tree.isBinary(),is(false));
+        tree.add(3, 6);
+        tree.add(3, 7);
+        tree.add(3, 8);
+        assertThat(tree.isBinary(), is(false));
     }
 
     @Test
-    public void whenTooIsBinaryThenTrueorFalse(){
+    public void whenTooIsBinaryThenTrueorFalse() {
         Tree<Integer> tree = new Tree<>(1);
         tree.add(1, 2);
         tree.add(1, 3);
         tree.add(2, 4);
         tree.add(2, 5);
-        tree.add(3,6);
-        tree.add(3,8);
-        assertThat(tree.isBinary(),is(true));
+        tree.add(3, 6);
+        tree.add(3, 8);
+        assertThat(tree.isBinary(), is(true));
     }
 
 }

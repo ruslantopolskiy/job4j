@@ -32,7 +32,7 @@ public class SimpleArrayList<E> {
         }
         Node<E> node = this.first;
         this.first = this.first.next;
-        node.next  = null;
+        node.next = null;
         return node.date;
     }
 
@@ -68,10 +68,7 @@ public class SimpleArrayList<E> {
 
         @Override
         public String toString() {
-            return "Node{" +
-                    "date=" + date +
-                    ", next=" + next +
-                    '}';
+            return "Node{" + "date=" + date + ", next=" + next + '}';
         }
     }
 }

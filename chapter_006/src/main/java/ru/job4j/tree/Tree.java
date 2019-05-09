@@ -52,11 +52,11 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
         list.offer(this.root);
         while (!list.isEmpty()) {
             node = list.poll();
-            if (node.leaves().size() > 2){
+            if (node.leaves().size() > 2) {
                 result = false;
                 break;
-            }else {
-                for (Node<E> e3: node.leaves()){
+            } else {
+                for (Node<E> e3 : node.leaves()) {
                     list.offer(e3);
                 }
             }
@@ -100,7 +100,6 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
                 }
                 return node.getValue();
             }
-        }
-                ;
+        };
     }
 }

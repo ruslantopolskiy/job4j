@@ -29,9 +29,6 @@ public class Node<E extends Comparable> {
 
     @Override
     public String toString() {
-        return "Node{" +
-                "value=" + value +
-                ", children=" + children +
-                '}';
+        return "Node{" + "value=" + value + ", children=" + children + '}';
     }
 }

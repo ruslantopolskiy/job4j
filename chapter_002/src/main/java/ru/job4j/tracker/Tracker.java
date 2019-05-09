@@ -25,7 +25,7 @@ public class Tracker implements ITracker {
     public Item findById(String id) {
         Item result = null;
         for (Item item : items) {
-            if ( item != null && item.getId().equals(id)) {
+            if (item != null && item.getId().equals(id)) {
                 result = item;
                 break;
             }

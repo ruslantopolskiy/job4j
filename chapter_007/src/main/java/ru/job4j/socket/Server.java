@@ -18,9 +18,9 @@ public class Server {
         String input;
         System.out.println("Server started, wait user's");
         try (
-             BufferedReader in = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
-             PrintWriter out = new PrintWriter(new OutputStreamWriter(this.socket.getOutputStream()), true)) {
-            if (socket.isConnected()){
+                BufferedReader in = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
+                PrintWriter out = new PrintWriter(new OutputStreamWriter(this.socket.getOutputStream()), true)) {
+            if (socket.isConnected()) {
                 System.out.println("*User connected*");
             }
             do {
@@ -29,7 +29,7 @@ public class Server {
                 if (input.equals("Hello") | input.equals("hello")) {
                     out.println("Hello, dear friend, I'm a oracle.");
                     out.println();
-                }else if(!input.equalsIgnoreCase("exit")){
+                } else if (!input.equalsIgnoreCase("exit")) {
                     out.println("It's an Oracle, you said : " + input);
                     out.println();
                 }
@@ -40,9 +40,9 @@ public class Server {
     }
 
     public static void main(String[] args) {
-        try(final Socket socket = new ServerSocket(5050).accept()) {
+        try (final Socket socket = new ServerSocket(5050).accept()) {
             new Server(socket).start();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.getStackTrace();
         }
     }

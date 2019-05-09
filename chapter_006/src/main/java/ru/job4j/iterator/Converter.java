@@ -17,13 +17,14 @@ public class Converter {
             @Override
             public boolean hasNext() {
                 boolean result = false;
-                while (it.hasNext() || inner.hasNext()){
-                if (inner.hasNext()) {
-                    result = true;
-                    break;
-                } else  {
-                    inner = it.next();
-                }}
+                while (it.hasNext() || inner.hasNext()) {
+                    if (inner.hasNext()) {
+                        result = true;
+                        break;
+                    } else {
+                        inner = it.next();
+                    }
+                }
                 return result;
             }
 

@@ -21,12 +21,13 @@ public class Client {
         String inServ;
         System.out.println("Hello.");
         try (
-             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-             BufferedReader keyIn = new BufferedReader(new InputStreamReader(System.in));
-             PrintWriter out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true)) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                BufferedReader keyIn = new BufferedReader(new InputStreamReader(System.in));
+                PrintWriter out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true)) {
             do {
                 System.out.println("Enter your message: ");
-                out.println(outServ = keyIn.readLine());
+                outServ = keyIn.readLine();
+                out.println(outServ);
                 inServ = in.readLine();
                 while (!inServ.isEmpty()) {
                     System.out.println(inServ);
@@ -39,10 +40,11 @@ public class Client {
     }
 
     public static void main(String[] args) {
-        try {final Socket socket = new Socket(InetAddress.getByName(adress),port);
+        try {
+            final Socket socket = new Socket(InetAddress.getByName(adress), port);
             new Client(socket).start();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.getStackTrace();
         }
     }

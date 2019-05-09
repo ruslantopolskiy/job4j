@@ -33,7 +33,7 @@ public class DynamicList<T> implements Iterable<T> {
         }
     }
 
-    public void addFirst(T date){
+    public void addFirst(T date) {
         Note<T> note = new Note<>(date);
         note.next = this.head;
         this.head = note;
@@ -50,8 +50,8 @@ public class DynamicList<T> implements Iterable<T> {
     }
 
     public T delete() {
-        if (this.head == null){
-            throw  new IllegalArgumentException("not elements");
+        if (this.head == null) {
+            throw new IllegalArgumentException("not elements");
         }
 
         Note<T> temp = this.head;
@@ -98,10 +98,7 @@ public class DynamicList<T> implements Iterable<T> {
 
         @Override
         public String toString() {
-            return "Note{" +
-                    "date=" + date +
-                    ", next=" + next +
-                    '}';
+            return "Note{" + "date=" + date + ", next=" + next + '}';
         }
 
         public Note(T date) {

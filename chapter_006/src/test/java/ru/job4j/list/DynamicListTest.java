@@ -21,18 +21,18 @@ public class DynamicListTest {
     }
 
     @Test
-    public void WhenThen() {
+    public void whenThen() {
         assertThat(list.get(0), is(2));
         assertThat(list.get(1), is(3));
     }
 
     @Test
-    public void When() {
+    public void when() {
         assertThat(list.size(), is(2));
     }
 
     @Test
-    public void WhenT() {
+    public void whenT() {
         Iterator<Integer> iterator = list.iterator();
         assertThat(iterator.hasNext(), is(true));
         assertThat(iterator.next(), is(2));
@@ -42,7 +42,7 @@ public class DynamicListTest {
     }
 
     @Test()
-    public void WhenAdd2() {
+    public void whenAdd2() {
         list.iterator().next();
         list.addLast(3432);
         list.addLast(34323);
@@ -59,7 +59,7 @@ public class DynamicListTest {
     }
 
     @Test
-    public void addFirst(){
+    public void addFirst() {
         list.addFirst(1);
         list.addFirst(2);
         list.addFirst(3);

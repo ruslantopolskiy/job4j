@@ -15,7 +15,7 @@ public class MapUser {
         map.put(second, (int) 2);
         System.out.println(map);
         System.out.println(first.equals(second));
-        System.out.println(first.hashCode()+ "  &&&  " + second.hashCode());
+        System.out.println(first.hashCode() + "  &&&  " + second.hashCode());
     }
 
     public static void main(String[] args) {

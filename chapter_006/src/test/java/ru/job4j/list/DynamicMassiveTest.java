@@ -27,44 +27,44 @@ public class DynamicMassiveTest {
     }
 
     @Test
-    public void WhenGetElementThen() {
+    public void whenGetElementThen() {
         assertThat(list.get(3), is(5));
     }
 
     @Test
-    public void WhenAddElements() {
+    public void whenAddElements() {
         list.add(33);
         assertThat(list.getSize(), is(10));
         list.add(11);
-        assertThat(list.getSize(), is(15));
+        assertThat(list.getSize(), is(11));
     }
 
     @Test
-    public void WhenGetSize() {
+    public void whenGetSize() {
         list.installsizeContainer(10);
-        assertThat(list.getSize(), is(10));
+        assertThat(list.getSize(), is(9));
     }
 
-    @Test (expected = IndexOutOfBoundsException .class)
-    public void WhenIndexOutBoundsException (){
-        assertThat(list.get(8),is(8));
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void whenIndexOutBoundsException() {
+        assertThat(list.get(8), is(8));
         list.get(10);
     }
 
     @Test
-    public void WhenNextIterator(){
+    public void whenNextIterator() {
         Iterator<Integer> iterator = list.iterator();
-        assertThat(iterator.hasNext(),is(true));
-        assertThat(iterator.hasNext(),is(true));
-        assertThat(iterator.next(),is(0));
-        assertThat(iterator.next(),is(1));
-        assertThat(list.iterator().next(),is(0));
-        assertThat(list.iterator().next(),is(0));
+        assertThat(iterator.hasNext(), is(true));
+        assertThat(iterator.hasNext(), is(true));
+        assertThat(iterator.next(), is(0));
+        assertThat(iterator.next(), is(1));
+        assertThat(list.iterator().next(), is(0));
+        assertThat(list.iterator().next(), is(0));
 
     }
 
     @Test()
-    public void WhenAdd2(){
+    public void whenAdd2() {
         list.iterator().next();
         list.add(3432);
         list.iterator().next();

@@ -18,19 +18,19 @@ public class SchoolTest {
             new Students(6));
 
     @Test
-    public void WhenAdd70ScoreThenClassA() {
+    public void whenAdd70ScoreThenClassA() {
         List<Students> list1 = school.collect(list, x -> x.getScore() >= 70);
         assertThat(list1.size(), is(2));
     }
 
     @Test
-    public void WhenAddScoreThenClassB() {
+    public void whenAddScoreThenClassB() {
         List<Students> list1 = school.collect(list, x -> x.getScore() >= 50 && x.getScore() < 70);
         assertThat(list1.size(), is(1));
     }
 
     @Test
-    public void WhenAddScoreThenClassC() {
+    public void whenAddScoreThenClassC() {
         List<Students> list1 = school.collect(list, x -> x.getScore() < 50);
         assertThat(list1.size(), is(3));
     }

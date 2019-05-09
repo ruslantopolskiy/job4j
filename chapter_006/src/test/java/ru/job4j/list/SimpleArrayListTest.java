@@ -2,6 +2,7 @@ package ru.job4j.list;
 
 import org.junit.Test;
 import org.junit.Before;
+
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -33,6 +34,6 @@ public class SimpleArrayListTest {
     @Test
     public void whenAddThreeElementsThenUseGetSizeResultTh2ree() {
         assertThat(list.delete(), is(7));
-        assertThat(list.getSize(),is(6));
+        assertThat(list.getSize(), is(6));
     }
 }

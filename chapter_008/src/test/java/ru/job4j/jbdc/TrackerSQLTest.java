@@ -18,7 +18,7 @@ public class TrackerSQLTest {
     private Connection connection;
     private String name = "postgres";
     private String password = "password";
-    private String url = "jdbc:postgresql://localhost:5432/java_a_from_z";
+    private String url = "jdbc:postgresql://localhost:5432/tracker";
 
 /*        @Test
         public void checkConnection() {

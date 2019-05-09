@@ -30,7 +30,7 @@ public class DynamicMassive<T> implements Iterable<T> {
     }
 
     public int getSize() {
-        return container.length;
+        return this.count;
     }
 
     public void add(T value) {

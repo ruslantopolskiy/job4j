@@ -23,23 +23,23 @@ public class ClientTest {
     ByteArrayOutputStream keyOut;
 
     @Before
-    public void before(){
+    public void before() {
         keyOut = new ByteArrayOutputStream();
         System.setOut(new PrintStream(keyOut));
     }
 
-    private void setSetIn(String console){
+    private void setSetIn(String console) {
         ketIn = new ByteArrayInputStream(console.getBytes());
-       System.setIn(ketIn);
+        System.setIn(ketIn);
     }
 
     @After
-    public void after(){
+    public void after() {
         System.setIn(systemIn);
         System.setOut(systemOut);
     }
 
-    public void clientTest(String console,String input,String expected )throws Exception{
+    public void clientTest(String console, String input, String expected) throws Exception {
         Socket socket = mock(Socket.class);
         setSetIn(console);
         ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -48,12 +48,12 @@ public class ClientTest {
         when(socket.getInputStream()).thenReturn(in);
         Client client = new Client(socket);
         client.start();
-        assertThat(keyOut.toString(),is(expected));
+        assertThat(keyOut.toString(), is(expected));
     }
 
     @Test
-    public void WhenExitThenExit() throws Exception{
-    clientTest(String.join(LN,"exit"),String.join(LN,"Privet client","",""),String.join(LN,"Hello.","Enter your message: ","Privet client",""));
+    public void whenExitThenExit() throws Exception {
+        clientTest(String.join(LN, "exit"), String.join(LN, "Privet client", "", ""), String.join(LN, "Hello.", "Enter your message: ", "Privet client", ""));
     }
 
 }

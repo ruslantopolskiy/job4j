@@ -15,7 +15,7 @@ public class TrackerSQL implements ITracker, AutoCloseable {
     private Connection connection;
     private String name = "postgres";
     private String password = "password";
-    private String url = "jdbc:postgresql://localhost:5432/java_a_from_z";
+    private String url = "jdbc:postgresql://localhost:5432/tracker";
 
     public TrackerSQL(Connection connection) {
         this.connection = connection;
