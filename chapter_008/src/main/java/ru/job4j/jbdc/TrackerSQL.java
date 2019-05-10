@@ -110,7 +110,6 @@ public class TrackerSQL implements ITracker, AutoCloseable {
                 name = resultSet.getString("name");
                 result.add(name);
             }
-
         } catch (SQLException e) {
             LOG.error(e.getMessage(), e);
         }
