@@ -30,6 +30,7 @@
             <db.driver>org.postgresql.Driver</db.driver>
         </properties>
     </profile>
+
     <profile>
         <id>production</id>
         <properties>
