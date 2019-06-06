@@ -23,10 +23,9 @@ public class StartUI {
         for (int index = 0; index < menuTracker.getSizeActions(); index++) {
             range.add(index);
         }
-
         do {
             menuTracker.show();
-            menuTracker.select(input.ask("select: " + range, menuTracker.getMassives()));
+            menuTracker.select(input.ask("select: " +range, menuTracker.getMassives()));
         } while (!"y".equals(this.input.ask("Exit?(y): ")));
     }
 

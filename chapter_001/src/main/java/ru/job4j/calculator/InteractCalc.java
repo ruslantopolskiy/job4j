@@ -1,7 +1,7 @@
 package ru.job4j.calculator;
 
 /* Используя класс Calculator.
-1. Сделать класс InteractCalc.
+1. Сделать класс InteractCalculator.
 2. В классе должен быть пользовательский ввод.
 3. Повторный выбор операции и переиспользование предыдущего вычисления.
 4. Проект должен следовать SRP.*/
@@ -11,16 +11,20 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class InteractCalc extends Calculator {
-    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-    Calculator calculator = new Calculator();
+    Calculator calculator;
+
     private static final String exit = "EXIT";
     private static final String previousResult = "prevResult";
 
+    public InteractCalc(Calculator calculator) {
+        this.calculator = calculator;
+    }
 
-    public void start()  {
-        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in))){
+
+    public void start() {
+        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in))) {
             String text;
-            while (!(text = bufferedReader.readLine()).equals(exit)){
+            while (!(text = bufferedReader.readLine()).equals(exit)) {
                 System.out.println(actions(text));
             }
         } catch (IOException e) {
@@ -28,7 +32,7 @@ public class InteractCalc extends Calculator {
         }
     }
 
-    public String actions (String value){
+    public String actions(String value) {
         String result = null;
         if (value.contains(previousResult)) {
             value = value.replace(previousResult, Double.toString(calculator.getResult()));
@@ -65,7 +69,7 @@ public class InteractCalc extends Calculator {
 
 
     public static void main(String[] args) {
-        InteractCalc interactCalc = new InteractCalc();
+        InteractCalc interactCalc = new InteractCalc(new Calculator());
         interactCalc.start();
     }
 

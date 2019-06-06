@@ -13,6 +13,8 @@ public class ValidateInput implements Input {
         return this.input.ask(questions);
     }
 
+
+
     @Override
     public int ask(String questions, int[] ranges) {
         boolean invalid = true;
