@@ -1,12 +1,14 @@
 package ru.job4j.InteractCalculator;
 
+import ru.job4j.calculator.Calculator;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class ConsoleInput implements Input {
+    Calculator calculator = new Calculator();
     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-    Double[] massive;
 
     @Override
     public String askExit(String text) {
@@ -21,13 +23,18 @@ public class ConsoleInput implements Input {
     }
 
     @Override
-    public Double ask(String text) {
-        double child;
-        while (true){
+    public double ask(String text) {
+        String child;
+        double result = 0;
+        while (true) {
             try {
                 System.out.println(text);
-                child = Double.parseDouble(bufferedReader.readLine());
-                bufferedReader.close();
+                child = bufferedReader.readLine();
+                if (child.equalsIgnoreCase("prev")) {
+                    result =(calculator.getResult());
+                }else {
+                    result = Double.parseDouble(child);
+                }
                 break;
             } catch (NumberFormatException nfe) {
                 System.out.println("Введено не число, попрубуйте ещё раз!");
@@ -36,7 +43,7 @@ public class ConsoleInput implements Input {
                 e1.printStackTrace();
             }
         }
-        return child;
+        return result;
     }
 
 }

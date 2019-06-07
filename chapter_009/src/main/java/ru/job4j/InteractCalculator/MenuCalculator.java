@@ -7,21 +7,35 @@ import java.util.List;
 
 public class MenuCalculator {
     private final Calculator calculator;
+    private final Input input;
 
-    public MenuCalculator(Calculator calculator) {
+    public MenuCalculator(Calculator calculator, Input input) {
         this.calculator = calculator;
+        this.input = input;
     }
 
     List<UserAction> list = new ArrayList<>();
 
-    void set() {
-        list.add(1,new add(1,"Суммирование"));
-        list.add(4, new div(4, "Деление"));
+    public void inizialse() {
+        list.add(0, new add(0, "Суммирование"));
+        list.add(1, new subtract(1, "Вычитание"));
+        list.add(2, new multiple(2, "Умножение"));
+        list.add(3, new div(3, "Деление"));
+    }
+
+    public void show() {
+        for (UserAction userAction : list) {
+            if (userAction != null)
+                System.out.println(userAction.info());
+        }
+    }
+
+    public void select (int key){
+        list.get(key).execute(this.input);
     }
 
 
-
-    private abstract class BaseAction implements UserAction {
+    public abstract class BaseAction implements UserAction {
         private int key;
         private String name;
 
@@ -52,6 +66,7 @@ public class MenuCalculator {
             Double a = input.ask("Введите первое число: ");
             Double b = input.ask("Введите второе число: ");
             calculator.div(a, b);
+            System.out.println("Итого: " + calculator.getResult());
         }
     }
 
@@ -66,6 +81,37 @@ public class MenuCalculator {
             Double a = input.ask("Введите первое число: ");
             Double b = input.ask("Введите второе число: ");
             calculator.add(a, b);
+            System.out.println("Итого: " + calculator.getResult());
+        }
+    }
+
+    public class subtract extends BaseAction {
+        public subtract(int key, String name) {
+            super(key, name);
+        }
+
+        @Override
+        public void execute(Input input) {
+            System.out.println("----------Вычетание чисел----------");
+            Double a = input.ask("Введите первое число: ");
+            Double b = input.ask("Введите второе число: ");
+            calculator.subtract(a, b);
+            System.out.println("Итого: " + calculator.getResult());
+        }
+    }
+
+    public class multiple extends BaseAction {
+        public multiple(int key, String name) {
+            super(key, name);
+        }
+
+        @Override
+        public void execute(Input input) {
+            System.out.println("----------Умножение чисел----------");
+            Double a = input.ask("Введите первое число: ");
+            Double b = input.ask("Введите второе число: ");
+            calculator.multiple(a, b);
+            System.out.println("Итого: " + calculator.getResult());
         }
     }
 
