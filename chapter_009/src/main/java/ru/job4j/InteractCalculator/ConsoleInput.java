@@ -7,8 +7,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class ConsoleInput implements Input {
-    Calculator calculator = new Calculator();
+    private Calculator calculator;
     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+
+    public ConsoleInput(Calculator calculator) {
+        this.calculator = calculator;
+    }
 
     @Override
     public String askExit(String text) {
@@ -31,7 +35,7 @@ public class ConsoleInput implements Input {
                 System.out.println(text);
                 child = bufferedReader.readLine();
                 if (child.equalsIgnoreCase("prev")) {
-                    result =(calculator.getResult());
+                    result =calculator.getResult();
                 }else {
                     result = Double.parseDouble(child);
                 }

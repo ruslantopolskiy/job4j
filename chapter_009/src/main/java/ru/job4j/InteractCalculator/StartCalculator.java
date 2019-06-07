@@ -21,8 +21,8 @@ public class StartCalculator {
     }
 
     public static void main(String[] args) {
-        Input input = new ConsoleInput();
         Calculator calculator = new Calculator();
+        Input input = new ConsoleInput(calculator);
         MenuCalculator menuCalculator = new MenuCalculator(calculator, input);
         menuCalculator.inizialse();
         new StartCalculator(input,menuCalculator,calculator).init();
