@@ -17,7 +17,7 @@ public class StartCalculator {
         do {
             menuCalculator.show();
             menuCalculator.select((int)input.ask("Выберите действие: "));
-        } while (!"y".equalsIgnoreCase(input.askExit("Exit(y) ?")));
+        } while (!"y".equalsIgnoreCase(input.askExit("Exit(y/n)?")));
     }
 
     public static void main(String[] args) {
