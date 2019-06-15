@@ -1,4 +1,6 @@
 package ru.job4j.OtherCalculator;
 
-public class OperationCalculator {
+public interface Operation {
+   void execute(String text);
+
 }
