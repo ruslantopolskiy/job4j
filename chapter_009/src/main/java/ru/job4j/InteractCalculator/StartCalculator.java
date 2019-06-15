@@ -2,6 +2,8 @@ package ru.job4j.InteractCalculator;
 
 import ru.job4j.calculator.Calculator;
 
+import java.util.function.Function;
+
 public class StartCalculator {
     private final Input input;
     private final MenuCalculator menuCalculator;
@@ -19,6 +21,8 @@ public class StartCalculator {
             menuCalculator.select((int)input.ask("Выберите действие: "));
         } while (!"y".equalsIgnoreCase(input.askExit("Exit(y/n)?")));
     }
+
+
 
     public static void main(String[] args) {
         Calculator calculator = new Calculator();

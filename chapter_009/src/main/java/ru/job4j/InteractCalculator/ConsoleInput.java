@@ -26,7 +26,6 @@ public class ConsoleInput implements Input {
         return result;
     }
 
-    @Override
     public double ask(String text) {
         String child;
         double result = 0;
